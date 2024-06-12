@@ -2,4 +2,4 @@
 '@toktokhan-fe/next-page-init': patch
 ---
 
-initialize
+changeset pakcage name
