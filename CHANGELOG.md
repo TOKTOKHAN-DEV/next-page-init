@@ -1,5 +1,12 @@
 # @toktokhan-fe/next-page-init
 
+## 0.0.3
+
+### Patch Changes
+
+- a96412c: changeset action for git tag
+- 05eafad: changeset action version -> publish
+
 ## 0.0.2
 
 ### Patch Changes
