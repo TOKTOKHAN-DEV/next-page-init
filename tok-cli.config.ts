@@ -1,4 +1,5 @@
 import { RootConfig } from '@toktokhan-dev/cli'
+import { commit } from '@toktokhan-dev/cli-plugin-commit'
 import { genApi } from '@toktokhan-dev/cli-plugin-gen-api-react-query'
 import { genIcon } from '@toktokhan-dev/cli-plugin-gen-icon-chakra'
 import { genImg } from '@toktokhan-dev/cli-plugin-gen-img'
@@ -12,9 +13,10 @@ const config: RootConfig<{
     typeof genApi,
     typeof genTheme,
     typeof genIcon,
+    typeof commit,
   ]
 }> = {
-  plugins: [genImg, genRoutePage, genApi, genTheme, genIcon],
+  plugins: [genImg, genRoutePage, genApi, genTheme, genIcon, commit],
   'gen:img': {
     input: 'public/images',
     oneDepth: true,
