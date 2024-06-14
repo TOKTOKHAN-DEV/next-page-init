@@ -9,7 +9,7 @@ function Home() {
       flexDir={'column'}
     >
       <Text color="brand.400" textStyle={['pre-heading-01', 'pre-display-05']}>
-        TOKTOKHAN-FE
+        TOKTOKHAN DEV
       </Text>
       <Text textStyle={['pre-heading-05', 'pre-heading-03']}>
         Next page template
