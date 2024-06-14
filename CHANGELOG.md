@@ -1,5 +1,11 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.1
+
+### Patch Changes
+
+- 9ff916e: 똑똑한 개발자 컨벤션이 담긴 Next.js page-router 가 적용 된 보일러 플레이트 입니다.
+
 ## 0.0.3
 
 ### Patch Changes
