@@ -1,0 +1,24 @@
+# @toktokhan-dev/next-page-init
+
+## 0.0.3
+
+### Patch Changes
+
+- a96412c: changeset action for git tag
+- 05eafad: changeset action version -> publish
+
+## 0.0.2
+
+### Patch Changes
+
+- 621ee4f: changeset action for git tag
+
+## 0.0.1
+
+### Patch Changes
+
+- 58f516e: use pnpm in github action
+- c21709a: changeset pakcage name
+- f11c21e: package.json name
+- 270d669: setup husky
+- 3194fde: initialize
