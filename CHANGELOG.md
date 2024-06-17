@@ -1,5 +1,14 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.2
+
+### Patch Changes
+
+- 7e3e050: add gitignore
+- 7ea6357: remove pnpm-lock.yaml
+- b8b2bf3: add tok-cli-commit
+- 2bf5a83: update packages version
+
 ## 0.0.1
 
 ### Patch Changes
