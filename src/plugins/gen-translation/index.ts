@@ -13,7 +13,7 @@ import {
 } from './genTranslation'
 
 /**
- * `미리 정의한 다국어 스프레드시트`의 데이터들을 조회하여 다국어 json파일들을 생성해줍니다.
+ * `Spreadsheet`의 데이터들을 조회하여 다국어 json파일들을 생성해줍니다.
  * `gen:translation - google sheet 템플릿`을 사용한 환경에서 사용가능합니다.
  *
  * @packageDocumentation
@@ -22,12 +22,15 @@ import {
 type genTranslationConfig = {
   /** 다국어 정보를 가져올 스프레드시트의 id값 입니다. 스프레드시트 URL에서 /d/와 /edit 사이의 부분입니다.*/
   sheetId: string
-  /** 생성될 파일들이 위치할 디렉토리경로입니다. */
+  /** 생성될 파일들이 위치할 디렉토리 경로입니다. */
   outputDir: string
 }
 
 const TRANSLATION_OUTPUT_DIR_PATH = path.resolve('./src/generated/locales')
 
+/**
+ * @category Commands
+ */
 export const genTranslation = defineCommand<
   'gen:translation',
   genTranslationConfig
