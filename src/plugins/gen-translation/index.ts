@@ -5,7 +5,7 @@ import { withLoading } from '@toktokhan-dev/node'
 
 import { google } from 'googleapis'
 
-import keys from './gen-translation-bot.json'
+import { API_KEY } from './gen-translation-api-key.json'
 import {
   generateTranslation,
   initOutputFolder,
@@ -37,16 +37,9 @@ export const genTranslation = defineCommand<
       if (!config.sheetId) {
         throw Error('sheetId를 설정해주세요')
       }
-      const client = new google.auth.JWT(
-        keys.client_email,
-        '1GrsUdgPDOyn2f2QWCcK6fp2b_5phkE7fLPdsFUAzlXM',
-        keys.private_key,
-        ['https://www.googleapis.com/auth/spreadsheets'],
-      )
-      client.authorize()
       const { spreadsheets } = google.sheets({
         version: 'v4',
-        auth: client,
+        auth: API_KEY,
       })
       initOutputFolder(config.outputDir)
       withLoading('Generate Translation JSON', '', (spinner) => {
