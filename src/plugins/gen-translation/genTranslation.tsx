@@ -6,7 +6,6 @@ import { sheets_v4 } from 'googleapis'
 type genTranslationConfig = {
   sheetId: string
   outputDir: string
-  name: string
 }
 
 type SpreadErrorType = {
