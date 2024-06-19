@@ -1,0 +1,5 @@
+{
+  "testKey": "it is test template",
+  "introduce_self": "my name is {{name}}",
+  "키값을 지정하지 않으면 1번 cell이 키값이 됩니다": "If you do not enter a key value, the key value is set in cell number 1."
+}
