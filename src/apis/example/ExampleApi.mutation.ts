@@ -17,7 +17,8 @@ export const EXAMPLE_API_MUTATION_KEY = {
 export const useCreateExampleMutation = (
   params?: UseMutationParams<typeof exampleApi.create>,
 ) => {
-  return useMutation(exampleApi.create, {
+  return useMutation({
+    mutationFn: exampleApi.create,
     ...params?.options,
   })
 }
@@ -25,7 +26,8 @@ export const useCreateExampleMutation = (
 export const useUpdateExampleMutation = (
   params?: UseMutationParams<typeof exampleApi.update>,
 ) => {
-  return useMutation(exampleApi.update, {
+  return useMutation({
+    mutationFn: exampleApi.update,
     ...params?.options,
   })
 }
@@ -33,7 +35,8 @@ export const useUpdateExampleMutation = (
 export const useDeleteExampleMutation = (
   params?: UseMutationParams<typeof exampleApi.delete>,
 ) => {
-  return useMutation(exampleApi.delete, {
+  return useMutation({
+    mutationFn: exampleApi.delete,
     ...params?.options,
   })
 }

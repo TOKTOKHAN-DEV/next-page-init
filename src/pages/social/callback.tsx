@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import LinkCallback from './components/LinkCallback'
-import PopupCallback from './components/PopupCallback'
+import LinkCallback from '@/containers/Social/components/LinkCallback'
+import PopupCallback from '@/containers/Social/components/PopupCallback'
 
 function SocialCallback() {
   const [isPopup, setIsPopup] = useState(true)

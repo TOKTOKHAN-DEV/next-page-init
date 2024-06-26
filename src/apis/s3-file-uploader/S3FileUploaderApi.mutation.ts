@@ -7,7 +7,8 @@ import s3FileUploaderApi from './S3FileUploaderApi'
 export const useUploadFileToS3Mutation = (
   params?: UseMutationParams<typeof s3FileUploaderApi.uploadFileToS3>,
 ) => {
-  return useMutation(s3FileUploaderApi.uploadFileToS3, {
+  return useMutation({
+    mutationFn: s3FileUploaderApi.uploadFileToS3,
     ...params?.options,
   })
 }
@@ -15,7 +16,8 @@ export const useUploadFileToS3Mutation = (
 export const useUploadFilesToS3Mutation = (
   params?: UseMutationParams<typeof s3FileUploaderApi.uploadFilesToS3>,
 ) => {
-  return useMutation(s3FileUploaderApi.uploadFilesToS3, {
+  return useMutation({
+    mutationFn: s3FileUploaderApi.uploadFilesToS3,
     ...params?.options,
   })
 }

@@ -70,7 +70,7 @@ const SOCIAL_CONFIGS = [
     IconButton: AppleIconButton,
     clientId: ENV.APPLE_CLIENT_ID,
   },
-]
+] as const
 
 function Login() {
   const router = useRouter()
@@ -82,6 +82,18 @@ function Login() {
     if (data) {
       alert(`팝업 로그인 성공 ${JSON.stringify(data)}`)
     }
+    // if(!data) return
+    // mutateAsync({
+    //   data: {
+    //     code: data?.code || '',
+    //     type: data?.socialType as 'kakao',
+    //   },
+    // }).then((res) =>
+    //   tokenStorage?.set({
+    //     access: res.access_token,
+    //     refresh: res.refresh_token,
+    //   }),
+    // )
   }, [data])
 
   const handleLogin = <T extends { new (clientId: string): any }>(
@@ -118,37 +130,40 @@ function Login() {
         </Box>
       </Admonition>
       <HStack mt={'30px'} spacing={4} flexWrap={'wrap'}>
-        {SOCIAL_CONFIGS.map(({ name, Client, Button, clientId = '' }) => (
-          <Button
-            key={name}
-            colorMode={colorMode}
-            onClick={() =>
-              handleLogin(Client, clientId, 'loginToLink', {
-                scope:
-                  name === 'Google' ?
-                    [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile]
-                  : undefined,
-              })
-            }
-            style={{}}
-          />
-        ))}
+        {SOCIAL_CONFIGS.map(
+          ({ name, Client, Button: SocialButton, clientId = '' }) => (
+            <SocialButton
+              key={name}
+              colorMode={colorMode}
+              onClick={() =>
+                handleLogin(Client, clientId, 'loginToLink', {
+                  scope:
+                    name === 'Google' ?
+                      [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile]
+                    : undefined,
+                })
+              }
+            />
+          ),
+        )}
       </HStack>
       <HStack mt={'20px'} flexWrap={'wrap'} spacing={4}>
-        {SOCIAL_CONFIGS.map(({ name, Client, IconButton, clientId = '' }) => (
-          <IconButton
-            key={name}
-            colorMode={colorMode}
-            onClick={() =>
-              handleLogin(Client, clientId, 'loginToPopup', {
-                scope:
-                  name === 'Google' ?
-                    [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile]
-                  : undefined,
-              })
-            }
-          />
-        ))}
+        {SOCIAL_CONFIGS.map(
+          ({ name, Client, IconButton: SocialIconButton, clientId = '' }) => (
+            <SocialIconButton
+              key={name}
+              colorMode={colorMode}
+              onClick={() =>
+                handleLogin(Client, clientId, 'loginToPopup', {
+                  scope:
+                    name === 'Google' ?
+                      [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile]
+                    : undefined,
+                })
+              }
+            />
+          ),
+        )}
       </HStack>
     </TemplateLayout>
   )

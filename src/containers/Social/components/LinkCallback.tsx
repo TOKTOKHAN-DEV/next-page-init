@@ -7,13 +7,25 @@ import Splash from '@/components/Splash'
 
 const LinkCallback = () => {
   const router = useRouter()
+
   const result = useOauthLinkCallback({
     onSuccess: (res) => {
       console.log('res', res)
-      // mutate({ token: data?.token, socialType: data?.socialType })
+      // mutateAsync({
+      //   data: {
+      //     code: res.data?.code || '',
+      //     type: res.data?.socialType as 'kakao',
+      //   },
+      // }).then((res) => {
+      //   tokenStorage?.set({
+      //     access: res.access_token,
+      //     refresh: res.refresh_token,
+      //   })
+      // })
     },
-    onFail: () => {
+    onFail: (res) => {
       console.log('failed to login')
+      router.push(res.returnUrl || '/')
     },
   })
 

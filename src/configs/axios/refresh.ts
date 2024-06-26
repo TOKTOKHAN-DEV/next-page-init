@@ -3,7 +3,7 @@ export const retryReqeustManager = () => {
 
   return async (params: {
     getToken: () => Promise<string>
-    onRefetch: (refresed: string) => any
+    onRefetch: (refreshed: string) => any
     onError: (error: any) => any
   }) => {
     const { onError, onRefetch, getToken } = params

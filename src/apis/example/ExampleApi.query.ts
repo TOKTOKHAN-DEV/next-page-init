@@ -17,20 +17,20 @@ export function useGetExampleListQuery(
   params?: UseQueryParams<typeof exampleApi.getList>,
 ) {
   const queryKey = EXAMPLE_API_QUERY_KEY.GET_LIST(params?.variables)
-  return useQuery(
+  return useQuery({
     queryKey,
-    () => exampleApi.getList(params?.variables),
-    params?.options,
-  )
+    queryFn: () => exampleApi.getList(params?.variables),
+    ...params?.options,
+  })
 }
 
 export function useGetExampleByIdQuery(
   params: UseQueryParams<typeof exampleApi.getById>,
 ) {
   const queryKey = EXAMPLE_API_QUERY_KEY.GET_BY_ID(params?.variables)
-  return useQuery(
+  return useQuery({
     queryKey,
-    () => exampleApi.getById(params?.variables),
-    params?.options,
-  )
+    queryFn: () => exampleApi.getById(params?.variables),
+    ...params?.options,
+  })
 }

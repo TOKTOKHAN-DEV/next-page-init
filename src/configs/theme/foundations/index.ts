@@ -19,5 +19,3 @@ export const foundations = {
   shadows,
   ...typography,
 }
-
-console.log(colors)

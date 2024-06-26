@@ -5,11 +5,12 @@ import Splash from '@/components/Splash'
 const PopupCallback = () => {
   useOauthPopupCallback({
     onSuccess: (res) => {
+      console.log('succeed to login', res)
       res.closePopup()
-      // mutate({ token: data?.token, socialType: data?.socialType })
     },
-    onFail: () => {
-      console.log('failed to login')
+    onFail: (res) => {
+      console.log('failed to login', res)
+      res.closePopup()
     },
   })
 
