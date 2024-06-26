@@ -1,5 +1,15 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.3
+
+### Patch Changes
+
+- 5fedf7f: - update'@toktokhan-dev/\*' packages
+  - update social oauth
+    - onFail parameters
+  - update example react query v5대응
+  - eslint downgrade v8.5.3
+
 ## 0.0.2
 
 ### Patch Changes
