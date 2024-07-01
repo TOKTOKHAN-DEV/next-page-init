@@ -18,8 +18,8 @@ const LinkCallback = () => {
       //   },
       // }).then((res) => {
       //   tokenStorage?.set({
-      //     access: res.access_token,
-      //     refresh: res.refresh_token,
+      //     access_token: res.access_token,
+      //     refresh_token: res.refresh_token,
       //   })
       // })
     },

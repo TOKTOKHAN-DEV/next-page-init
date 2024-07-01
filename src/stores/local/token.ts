@@ -4,8 +4,8 @@ import {
 } from '@toktokhan-dev/react-web'
 
 export type TokenType = {
-  access: string
-  refresh: string
+  access_token: string
+  refresh_token: string
 }
 
 export const {

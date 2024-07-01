@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios'
 import { ENV } from '@/configs/env'
 import { tokenStorage } from '@/stores/local/token'
 
-import { retryReqeustManager } from './refresh'
+import { retryRequestManager } from './retry-request-manager'
 
 const isDev = ENV.NODE_ENV === 'development'
 
@@ -17,14 +17,14 @@ const instance = axios.create({
   },
 })
 
-const retry = retryReqeustManager()
+const retry = retryRequestManager()
 
 instance.interceptors.request.use(
   (config) => {
     const token = tokenStorage?.get()
-    const isAccess = !!token && !!token.access
+    const isAccess = !!token && !!token.access_token
     if (isAccess) {
-      config.headers.setAuthorization(`Bearer ${token.access}`)
+      config.headers.setAuthorization(`Bearer ${token.access_token}`)
     }
     return config
   },
@@ -42,7 +42,11 @@ instance.interceptors.response.use(
   async (error: AxiosError) => {
     try {
       const { response: res, config: reqData } = error || {}
-      const { status } = res || { status: 400 }
+      if (!res?.status) {
+        throw new Error('response status is not exist')
+      }
+
+      const { status } = res
       const isUnAuthError = status === 401
       const isExpiredToken = status === 444
 
