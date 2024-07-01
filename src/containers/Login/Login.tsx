@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { useRouter } from 'next/router'
 
@@ -34,82 +34,29 @@ import Admonition from '@/components/@Templates/Admonition'
 import TemplateLayout from '@/components/@Templates/TemplateLayout'
 import { ENV } from '@/configs/env'
 
-const SOCIAL_CONFIGS = [
-  {
-    name: 'Kakao',
-    Client: Kakao,
-    Button: KakaoButton,
-    IconButton: KakaoIconButton,
-    clientId: ENV.KAKAO_CLIENT_ID,
-  },
-  {
-    name: 'Naver',
-    Client: Naver,
-    Button: NaverButton,
-    IconButton: NaverIconButton,
-    clientId: ENV.NAVER_CLIENT_ID,
-  },
-  {
-    name: 'Google',
-    Client: Google,
-    Button: GoogleButton,
-    IconButton: GoogleIconButton,
-    clientId: ENV.GOOGLE_CLIENT_ID,
-  },
-  {
-    name: 'Facebook',
-    Client: Facebook,
-    Button: FacebookButton,
-    IconButton: FacebookIconButton,
-    clientId: ENV.FACEBOOK_CLIENT_ID,
-  },
-  {
-    name: 'Apple',
-    Client: Apple,
-    Button: AppleButton,
-    IconButton: AppleIconButton,
-    clientId: ENV.APPLE_CLIENT_ID,
-  },
-] as const
+const kakao = new Kakao(ENV.GOOGLE_CLIENT_ID)
+const naver = new Naver(ENV.NAVER_CLIENT_ID)
+const google = new Google(ENV.GOOGLE_CLIENT_ID)
+const facebook = new Facebook(ENV.FACEBOOK_CLIENT_ID)
+const apple = new Apple(ENV.APPLE_CLIENT_ID)
 
 function Login() {
   const router = useRouter()
   const { returnUrl } = router.query
   const { colorMode } = useColorMode()
-  const { data } = useOauthPopupListener()
+  const { data } = useOauthPopupListener<{
+    returnUrl: string
+    type: string
+  }>({
+    onSuccess: (res) => {
+      console.log(res)
+      alert(`로그인 성공: ${JSON.stringify(res)}`)
+    },
+  })
 
   useEffect(() => {
-    if (data) {
-      alert(`팝업 로그인 성공 ${JSON.stringify(data)}`)
-    }
-    // if(!data) return
-    // mutateAsync({
-    //   data: {
-    //     code: data?.code || '',
-    //     type: data?.socialType as 'kakao',
-    //   },
-    // }).then((res) =>
-    //   tokenStorage?.set({
-    //     access: res.access_token,
-    //     refresh: res.refresh_token,
-    //   }),
-    // )
+    console.log({ data })
   }, [data])
-
-  const handleLogin = <T extends { new (clientId: string): any }>(
-    Client: T,
-    clientId: string,
-    method: 'loginToPopup' | 'loginToLink',
-    extraParams: Record<string, any> = {},
-  ) => {
-    const client = new Client(clientId)
-    const loginMethod = client[method]
-    loginMethod({
-      redirect_uri: `${window.origin}/social/callback`,
-      return_url: returnUrl || '/login',
-      ...extraParams,
-    })
-  }
 
   return (
     <TemplateLayout title={'Login'}>
@@ -130,40 +77,130 @@ function Login() {
         </Box>
       </Admonition>
       <HStack mt={'30px'} spacing={4} flexWrap={'wrap'}>
-        {SOCIAL_CONFIGS.map(
-          ({ name, Client, Button: SocialButton, clientId = '' }) => (
-            <SocialButton
-              key={name}
-              colorMode={colorMode}
-              onClick={() =>
-                handleLogin(Client, clientId, 'loginToLink', {
-                  scope:
-                    name === 'Google' ?
-                      [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile]
-                    : undefined,
-                })
-              }
-            />
-          ),
-        )}
+        <KakaoButton
+          colorMode={colorMode}
+          onClick={() =>
+            kakao.loginToLink({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'kakao',
+              },
+            })
+          }
+        />
+        <NaverButton
+          colorMode={colorMode}
+          onClick={() =>
+            naver.loginToLink({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'naver',
+              },
+            })
+          }
+        />
+        <GoogleButton
+          colorMode={colorMode}
+          onClick={() =>
+            google.loginToLink({
+              redirect_uri: `${window.origin}/social/callback`,
+              scope: [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile],
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'google',
+              },
+            })
+          }
+        />
+        <FacebookButton
+          colorMode={colorMode}
+          onClick={() =>
+            facebook.loginToLink({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'facebook',
+              },
+            })
+          }
+        />
+        <AppleButton
+          colorMode={colorMode}
+          onClick={() =>
+            apple.loginToLink({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'apple',
+              },
+            })
+          }
+        />
       </HStack>
       <HStack mt={'20px'} flexWrap={'wrap'} spacing={4}>
-        {SOCIAL_CONFIGS.map(
-          ({ name, Client, IconButton: SocialIconButton, clientId = '' }) => (
-            <SocialIconButton
-              key={name}
-              colorMode={colorMode}
-              onClick={() =>
-                handleLogin(Client, clientId, 'loginToPopup', {
-                  scope:
-                    name === 'Google' ?
-                      [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile]
-                    : undefined,
-                })
-              }
-            />
-          ),
-        )}
+        <KakaoIconButton
+          colorMode={colorMode}
+          onClick={() =>
+            kakao.loginToPopup({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'kakao',
+              },
+            })
+          }
+        />
+        <NaverIconButton
+          colorMode={colorMode}
+          onClick={() =>
+            naver.loginToPopup({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'naver',
+              },
+            })
+          }
+        />
+        <GoogleIconButton
+          colorMode={colorMode}
+          onClick={() =>
+            google.loginToPopup({
+              redirect_uri: `${window.origin}/social/callback`,
+              scope: [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile],
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'google',
+              },
+            })
+          }
+        />
+        <FacebookIconButton
+          colorMode={colorMode}
+          onClick={() =>
+            facebook.loginToPopup({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'facebook',
+              },
+            })
+          }
+        />
+        <AppleIconButton
+          colorMode={colorMode}
+          onClick={() =>
+            apple.loginToPopup({
+              redirect_uri: `${window.origin}/social/callback`,
+              state: {
+                returnUrl: returnUrl || '/login',
+                type: 'apple',
+              },
+            })
+          }
+        />
       </HStack>
     </TemplateLayout>
   )

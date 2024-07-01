@@ -8,13 +8,13 @@ import Splash from '@/components/Splash'
 const LinkCallback = () => {
   const router = useRouter()
 
-  const result = useOauthLinkCallback({
+  const result = useOauthLinkCallback<{ type: string; returnUrl: string }>({
     onSuccess: (res) => {
       console.log('res', res)
       // mutateAsync({
       //   data: {
-      //     code: res.data?.code || '',
-      //     type: res.data?.socialType as 'kakao',
+      //     code: res.code,
+      //     type: res.state.type,
       //   },
       // }).then((res) => {
       //   tokenStorage?.set({
@@ -23,9 +23,9 @@ const LinkCallback = () => {
       //   })
       // })
     },
-    onFail: (res) => {
+    onFail: () => {
       console.log('failed to login')
-      router.push(res.returnUrl || '/')
+      // router.push(res.returnUrl || '/')
     },
   })
 
@@ -34,7 +34,7 @@ const LinkCallback = () => {
     <Center flex={1} h={'100vh'}>
       <Button
         onClick={() => {
-          router.push(result.data?.returnUrl || '/')
+          router.push(result.data?.state?.returnUrl || '/')
         }}
       >
         로그인 성공
