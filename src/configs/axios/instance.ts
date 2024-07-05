@@ -17,7 +17,7 @@ const instance = axios.create({
   },
 })
 
-const retry = retryRequestManager()
+const retry = retryRequestManager({ cleanupTimeOut: 5000 })
 
 instance.interceptors.request.use(
   (config) => {
@@ -53,31 +53,30 @@ instance.interceptors.response.use(
       if (isDev) apiLogger({ status, reqData, resData: error, method: 'error' })
 
       if (isExpiredToken) {
-        throw new Error('expired token: please set refresh token logic')
+        // throw new Error('expired token: please set refresh token logic')
         return retry({
           getToken: async () => {
-            // const token = await instance.get<{
-            //   access_token: string
-            //   refresh_token: string
-            // }>('/v1/user/refresh/')
+            const { data: token } = await instance.post<{
+              access_token: string
+              refresh_token: string
+            }>('/auth/refresh/', {
+              refreshToken: tokenStorage?.get()?.refresh_token,
+            })
 
-            // tokenStorage?.set({
-            //   access: token.data.access_token,
-            //   refresh: token.data.refresh_token,
-            // })
+            tokenStorage?.set(token)
 
-            // return token.data.access_token
+            return token.access_token
 
             return 'token'
           },
           onRefetch: (token) => {
-            // if (!reqData) return Promise.reject('reqData is not exist')
-            // reqData.headers.Authorization = `Bearer ${token}`
-            // instance.request(reqData)
+            if (!reqData) return Promise.reject('reqData is not exist')
+            reqData.headers.Authorization = `Bearer ${token}`
+            instance.request(reqData)
           },
           onError: () => {
-            // tokenStorage.remove();
-            // return Promise.reject(error)
+            tokenStorage?.remove()
+            return Promise.reject(error)
           },
         })
       }
