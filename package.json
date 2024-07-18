@@ -1,6 +1,6 @@
 {
   "name": "@toktokhan-dev/next-page-init",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "This template uses Next.js's page-router approach to help developers quickly set up and start building scalable, performant applications with TypeScript and Next.js.",
   "author": "TOKTOKHAN.DEV<dev@toktokhan.dev>",
   "scripts": {
