@@ -5,15 +5,16 @@ import {
   ContainerProps,
   HStack,
   IconButton,
-  Image,
+  Spinner,
 } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 
 import { LogoIcon, MenuIcon } from 'generated/icons/MyIcons'
 
+import ClientOnly from '@/components/ClientOnly'
 import { ROUTES } from '@/generated/path/routes'
 import { useAuth } from '@/hooks/useAuth'
-import { MY_IMAGES } from '@/images'
+import { tokenStorage } from '@/stores/local/token'
 
 import HomeHeaderDrawer from './components/HomeHeaderDrawer'
 
@@ -33,14 +34,20 @@ const HomeHeader = ({ ...props }: ContainerProps) => {
         <LogoIcon boxSize={'74px'} color={'icon.brand'} />
       </Link>
       <HStack spacing="16px">
-        {isLogin ?
-          <Button variant={'line'} size={'sm'} onClick={() => {}}>
-            Logout
-          </Button>
-        : <Link variant={'line'} size={'sm'} href={ROUTES.LOGIN_MAIN}>
-            Login
-          </Link>
-        }
+        <ClientOnly fallback={<Spinner size={'sm'} />}>
+          {isLogin ?
+            <Button
+              variant={'line'}
+              size={'sm'}
+              onClick={() => tokenStorage?.remove()}
+            >
+              Logout
+            </Button>
+          : <Link variant={'line'} size={'sm'} href={ROUTES.LOGIN_MAIN}>
+              Login
+            </Link>
+          }
+        </ClientOnly>
         <IconButton //
           size={'xs'}
           icon={<MenuIcon w="24px" h="24px" color={'icon.primary'} />}
