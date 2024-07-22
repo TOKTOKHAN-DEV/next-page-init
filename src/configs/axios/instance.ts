@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios'
 import { ENV } from '@/configs/env'
 import { tokenStorage } from '@/stores/local/token'
 
-import { retryRequestManager } from './retry-request-manager'
+// import { retryRequestManager } from './retry-request-manager'
 
 const isDev = ENV.NODE_ENV === 'development'
 
@@ -17,7 +17,8 @@ const instance = axios.create({
   },
 })
 
-const retry = retryRequestManager({ cleanupTimeOut: 5000 })
+// const retry = retryRequestManager({ cleanupTimeOut: 5000 })
+// const authApi = new AuthApi({ instance })
 
 instance.interceptors.request.use(
   (config) => {
@@ -53,32 +54,32 @@ instance.interceptors.response.use(
       if (isDev) apiLogger({ status, reqData, resData: error, method: 'error' })
 
       if (isExpiredToken) {
-        // throw new Error('expired token: please set refresh token logic')
-        return retry({
-          getToken: async () => {
-            const { data: token } = await instance.post<{
-              access_token: string
-              refresh_token: string
-            }>('/auth/refresh/', {
-              refreshToken: tokenStorage?.get()?.refresh_token,
-            })
+        throw new Error('expired token: please set refresh token logic')
+        // return retry({
+        //   getToken: async () => {
+        //     const refreshToken = tokenStorage?.get()?.refresh_token
 
-            tokenStorage?.set(token)
+        //     if (!refreshToken) throw new Error('refresh token is not exist')
 
-            return token.access_token
+        //     const { data: token } = await authApi.refresh({
+        //       data: {
+        //         refresh_token: refreshToken,
+        //       },
+        //     })
+        //     tokenStorage?.set(token)
 
-            return 'token'
-          },
-          onRefetch: (token) => {
-            if (!reqData) return Promise.reject('reqData is not exist')
-            reqData.headers.Authorization = `Bearer ${token}`
-            instance.request(reqData)
-          },
-          onError: () => {
-            tokenStorage?.remove()
-            return Promise.reject(error)
-          },
-        })
+        //     return token.access_token
+        //   },
+        //   onRefetch: (token) => {
+        //     if (!reqData) throw new Error('reqData is not exist')
+        //     reqData.headers.Authorization = `Bearer ${token}`
+        //     instance.request(reqData)
+        //   },
+        //   onError: () => {
+        //     tokenStorage?.remove()
+        //     return Promise.reject(error)
+        //   },
+        // })
       }
 
       if (isUnAuthError) {
