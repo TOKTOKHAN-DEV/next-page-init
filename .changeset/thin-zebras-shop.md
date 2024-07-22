@@ -4,19 +4,19 @@
 
 update s3-file-uploader
 
-# @toktokhan-dev 모듈 버젼 update
+## @toktokhan-dev 모듈 버젼 update
 
 프로젝트 내에 사용되고 있는 @toktokhan-dev 모듈들의 버젼이 일괄 업데이트 됐습니다.
 
-# axios instance 주석처리
+## axios instance 주석처리
 
 기존에 제거되있던 refresh flow 의 주석을 다시 추가했습니다.
 
-# s3-file-uploader 모듈 변경사항
+## s3-file-uploader 모듈 변경사항
 
 똑똑한 개발자의 서버 s3 구현사항이 달라짐에 따라, s3-file-upload 모듈이 수정되었습니다.
 
-## Server & Client Flow 상 변경점
+### Server & Client Flow 상 변경점
 
 1. backend server 로 부터 받는 presigned-url api 응답 schema 가 달라졌습니다. query param 으로 전달되던 값이 response body 의 fields 로 변경되었습니다.
 
@@ -84,7 +84,7 @@ fetch(url, {
 
 ```
 
-## Client S3FileUploader 모듈 변경점
+### Client S3FileUploader 모듈 변경점
 
 #### 기존
 
@@ -119,13 +119,10 @@ S3FileUploaderApi 모듈을 직접 수정하게 될 여지가 있다는 단점�
 따라서 아래처럼, 사용되는 함수를 주입받아 flow 만 처리하는 모듈이 새롭게 만들어 졌고, S3FileUplader 모듈은 오직 s3 에 파일을 업로드 하는 역할만을 수행하도록 변경되었습니다.
 
 ```ts
-
 // S3FileUpladerApi.ts
 class S3FileUploaderApi {
     async uploadFileToS3 ({ url, formData }) {...}
 }
-
-
 // S3FileUploaderApi.query.ts
 export const { uploadFile, uploadFiles } = createS3UploadFlow({
   // 아래 부분은 프로젝트 상황에 맞게 직접 작성합니다.
@@ -154,5 +151,4 @@ export const { uploadFile, uploadFiles } = createS3UploadFlow({
 })
 
 const useS3FileUploadMutate = (...) => useMutation({ mutationFn: uploadFile })
-
 ```
