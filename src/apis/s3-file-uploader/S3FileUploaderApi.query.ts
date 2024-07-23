@@ -71,7 +71,7 @@ export const { uploadFile, uploadFiles } = createS3UploadFlow({
   },
   uploadFileToS3: async ({ url, formData, file, fields }) => {
     // await s3FileUploaderApi.uploadFileToS3({ url, formData })
-    // const removeMedia = removeStr('/_media/')
+    // const removeMedia = removeStr(/\/?_media\//g)
     // return {
     //   /**
     //    * file 의 s3 full url 입니다.
