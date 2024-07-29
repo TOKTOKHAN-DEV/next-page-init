@@ -73,7 +73,7 @@ instance.interceptors.response.use(
         //   onRefetch: (token) => {
         //     if (!reqData) throw new Error('reqData is not exist')
         //     reqData.headers.Authorization = `Bearer ${token}`
-        //     instance.request(reqData)
+        //     return instance.request(reqData)
         //   },
         //   onError: () => {
         //     tokenStorage?.remove()
