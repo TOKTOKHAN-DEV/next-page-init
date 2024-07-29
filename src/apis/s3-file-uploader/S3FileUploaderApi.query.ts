@@ -79,7 +79,7 @@ export const { uploadFile, uploadFiles } = createS3UploadFlow({
     //   url: url + fields.key,
     //   /**
     //    * 파일의 s3 path 입니다. 똑개 서버로 image 경로를 업로드 할 때 사용됩니다.
-    //    * 똑똑한 개발자의 서버는 s3 파일의 경로를 단순 string 으로 저장하지 않고, 특별한 field 로 구분하여 저장하기 때문에,
+    //    * 똑똑한개발자의 서버는 s3 파일의 경로를 단순 string 으로 저장하지 않고, 특별한 field 로 구분하여 저장하기 때문에,
     //    * 이후 서버로 요청 할때 해당 path 값을 사용하여 요청을 보내야 합니다.
     //    *
     //    * 특별한 field 로 구분하여 저장 하는 이유는 admin 페이지의 file field 구분, 파일의 실 사용 여부를 판단하기 위해 사용됩니다.
@@ -91,18 +91,14 @@ export const { uploadFile, uploadFiles } = createS3UploadFlow({
   },
 })
 
-export const useUploadFileToS3Mutation = (
-  params?: UseMutationParams<typeof uploadFile>,
-) => {
+export const useUploadFileToS3Mutation = (params?: UseMutationParams) => {
   return useMutation({
     mutationFn: uploadFile,
     ...params?.options,
   })
 }
 
-export const useUploadFilesToS3Mutation = (
-  params?: UseMutationParams<typeof uploadFiles>,
-) => {
+export const useUploadFilesToS3Mutation = (params?: UseMutationParams) => {
   return useMutation({
     mutationFn: uploadFiles,
     ...params?.options,
