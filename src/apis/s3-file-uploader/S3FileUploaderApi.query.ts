@@ -1,8 +1,10 @@
+// apis/s3-file-uploader/S3FileUploaderApi.query.ts
 import { useMutation } from '@tanstack/react-query'
 import {
   // assertItemOf,
   // removeStr,
   createS3UploadFlow,
+  removeStr,
 } from '@toktokhan-dev/universal'
 
 import axios from 'axios'
@@ -38,30 +40,26 @@ export const s3FileUploaderApi = new S3FileUploaderApi({ instance: axios })
  * ```
  *
  */
+
 export const { uploadFile, uploadFiles } = createS3UploadFlow({
   prepareUpload: async (file: File) => {
     throw Error('not implemented s3 file uploader prepare logic')
     // const { name, type } = file
     // const [mime] = type.split('/')
-
     // assertItemOf(
     //   ['image', 'audio', 'text', 'video', 'application'] as const,
     //   mime,
     // )
-
-    // const { fields, url } = await presignedUrlApi.presignedUrlCreate({
+    // const { fields, url } = await presignedUrlApi.presignedUrlControllerCreate({
     //   data: {
     //     fileName: name,
     //     fileType: mime,
     //   },
     // })
-
     // const formData = new FormData()
-
     // Object.entries(fields).forEach(([k, v]) => formData.append(k, v))
     // formData.append('Content-Type', file.type)
     // formData.append('file', file)
-
     // return {
     //   url,
     //   formData,

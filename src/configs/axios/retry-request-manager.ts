@@ -7,7 +7,7 @@
  * @example
  *
  * ```ts
- * const retry = retryReqeustManager()
+ * const retry = retryRequestManager()
  *
  * const result = await retry({
  *  getToken: async () => {
