@@ -435,16 +435,4 @@ export const colors = {
     default: colorSchema['brand.500'],
     _dark: colorSchema['brand.400'],
   },
-  'background.test': {
-    default: '#ffffff',
-    _dark: colorSchema['violet.200'],
-  },
-  'background.test2': {
-    default: '#ffffff',
-    _dark: '#b8acf6',
-  },
-  'background.test3': {
-    default: colorSchema['grey.900'],
-    _dark: '#b8acf6',
-  },
 }
