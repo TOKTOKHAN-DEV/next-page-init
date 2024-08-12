@@ -8,10 +8,14 @@ function Home() {
       borderRadius={'8px'}
       flexDir={'column'}
     >
-      <Text color="brand.400" textStyle={['pre-heading-01', 'pre-display-05']}>
+      <Text
+        color={'text.brand'}
+        textStyle={'pre-display-05'}
+        textAlign={'center'}
+      >
         TOKTOKHAN DEV
       </Text>
-      <Text textStyle={['pre-heading-05', 'pre-heading-03']}>
+      <Text color={'text.primary'} textStyle={'pre-heading-02'}>
         Next page template
       </Text>
     </Center>

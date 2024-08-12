@@ -6,16 +6,7 @@ import { genImg } from '@toktokhan-dev/cli-plugin-gen-img'
 import { genRoutePage } from '@toktokhan-dev/cli-plugin-gen-route-pages'
 import { genTheme } from '@toktokhan-dev/cli-plugin-gen-theme-chakra'
 
-const config: RootConfig<{
-  plugins: [
-    typeof genImg,
-    typeof genRoutePage,
-    typeof genApi,
-    typeof genTheme,
-    typeof genIcon,
-    typeof commit,
-  ]
-}> = {
+const config: RootConfig = {
   plugins: [genImg, genRoutePage, genApi, genTheme, genIcon, commit],
   'gen:img': {
     input: 'public/images',
@@ -27,7 +18,19 @@ const config: RootConfig<{
   'gen:api': {
     swaggerSchemaUrl: 'https://sales-api-dev.pluuug.com/openapi.json/',
   },
-  'gen:theme': {},
+  'gen:theme': {
+    tokenModes: {
+      colors: {
+        light: 'light',
+        dark: 'dark',
+      },
+      textStyles: {
+        base: 'mobile',
+        sm: 'tablet',
+        md: 'desktop',
+      },
+    },
+  },
   'gen:icon': {
     input: 'public/icons',
   },
