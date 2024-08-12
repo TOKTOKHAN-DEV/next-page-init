@@ -1,5 +1,21 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.10
+
+### Patch Changes
+
+- 725dfa1: update token.json
+- ce56061: update token
+- 8b76381: @toktokhan-dev/\* 패키지 업데이트
+
+  - cli chakra , cli update
+  - tokenMode default 적용
+  - theme.json 변경
+
+  템플릿 배포시 슬랙 알림 기능 적용
+
+  - next-page-init 배포알림 적용 (slack)
+
 ## 0.0.9
 
 ### Patch Changes
