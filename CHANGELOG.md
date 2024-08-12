@@ -1,5 +1,16 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.10
+
+### Patch Changes
+
+- 31fd45c: s2 오타 및 타입에러 수정
+- 962b21a: - @toktokhan-dev/\* 패키지 업데이트
+  - cli chakra , cli update
+  - tokenMode default 적용
+  - theme.json 변경
+- ca3b468: 똑똑한 개발자 > 똑똑한개발자
+
 ## 0.0.9
 
 ### Patch Changes
