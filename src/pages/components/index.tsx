@@ -15,4 +15,4 @@ function ComponentsPage() {
   )
 }
 
-export default withUnAuthGuard(ComponentsPage)
+export default ComponentsPage
