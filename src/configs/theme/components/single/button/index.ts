@@ -31,7 +31,7 @@ const Button = defineStyleConfig({
   defaultProps: {
     variant: 'primary',
     size: 'md',
-    colorScheme: 'primary',
+    colorScheme: 'primary.3',
   },
 })
 
