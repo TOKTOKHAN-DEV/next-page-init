@@ -7,6 +7,11 @@ export const baseStyleTrack = defineStyle((props) => {
   return {
     p: '0px',
     bgColor: 'background.basic.4',
+    outlineColor: 'none',
+    _focusVisible: {
+      boxShadow: 'none',
+      outlineColor: 'none',
+    },
     _checked: {
       bgColor: 'primary.4',
       _dark: {

@@ -77,7 +77,7 @@ const sizes = {
     label: { ...textStyles['pre-body-02'] },
   }),
   md: definePartsStyle({
-    control: { w: '20px', h: '20px', m: '2px' }, // p 2px 안됨
+    control: { w: '20px', h: '20px', m: '2px' },
     label: { ...textStyles['pre-body-02'] },
   }),
   lg: definePartsStyle({

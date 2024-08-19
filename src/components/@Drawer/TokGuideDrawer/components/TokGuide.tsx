@@ -25,22 +25,22 @@ export const TokGuide = () => {
       <Tabs mt="24px">
         <TabList>
           <Tab>Bookmarks</Tab>
-          <Tab>Examples</Tab>
           <Tab>State</Tab>
           <Tab>Theme</Tab>
+          <Tab>Examples</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
             <Bookmarks />
           </TabPanel>
           <TabPanel>
-            <Examples />
-          </TabPanel>
-          <TabPanel>
             <State />
           </TabPanel>
           <TabPanel>
             <Theme />
+          </TabPanel>
+          <TabPanel>
+            <Examples />
           </TabPanel>
         </TabPanels>
       </Tabs>

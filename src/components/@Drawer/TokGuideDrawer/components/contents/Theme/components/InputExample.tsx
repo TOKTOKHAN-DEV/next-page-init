@@ -2,7 +2,7 @@ import { Heading, Input, VStack } from '@chakra-ui/react'
 
 import FormHelper from '@/components/FormHelper'
 
-export const InputSection = () => {
+export const InputExample = () => {
   return (
     <VStack w="300px" spacing="20px" my="24px">
       <FormHelper label="주제" message={{ help: '설명' }}>
