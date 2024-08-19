@@ -56,7 +56,7 @@ const Theme = () => {
   return (
     <Box>
       <HStack mb={'20px'} justify={'end'}>
-        <Text textStyle={'pre-heading-05'} color={'content.2'}>
+        <Text textStyle={'pre-heading-05'}>
           Toggle Disable{'\n'}
           <Text textStyle={'pre-caption-04'}>(Radio, Checkbox, Switch)</Text>
         </Text>

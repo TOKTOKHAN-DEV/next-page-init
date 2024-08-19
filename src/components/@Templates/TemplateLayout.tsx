@@ -14,6 +14,7 @@ const TemplateLayout = ({
   return (
     <Container variant={'template'} {...props}>
       <Text
+        color={'content.1'}
         pt={[0, '48px']}
         pb={'24px'}
         mb={'16px'}

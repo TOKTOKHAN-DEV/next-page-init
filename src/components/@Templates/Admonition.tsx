@@ -57,7 +57,7 @@ const Admonition = ({
         top={0}
         left={0}
       />
-      <Text mb={'10px'} textStyle={'pre-heading-05'}>
+      <Text mb={'10px'} textStyle={'pre-heading-05'} color={'content.1'}>
         <Text as={'span'} color={'primary.3'} fontSize={'20px'}>
           {AdmonitionData[type].icon}
         </Text>
