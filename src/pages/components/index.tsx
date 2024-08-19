@@ -2,7 +2,6 @@ import { NextSeo } from 'next-seo'
 
 import HomeLayout from '@/components/@Layout/HomeLayout'
 import Components from '@/containers/Components'
-import withUnAuthGuard from '@/hocs/withUnAuthGuard'
 
 function ComponentsPage() {
   return (

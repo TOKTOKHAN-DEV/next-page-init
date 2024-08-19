@@ -1,7 +1,7 @@
-import { checkboxAnatomy as parts } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
+import { radioAnatomy as parts } from '@chakra-ui/anatomy'
+import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system'
 
-import { textStyles } from '@/generated/tokens/text-styles'
+import textStyles from '../../foundations/text-styles'
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys)
@@ -10,18 +10,11 @@ const baseStyle = definePartsStyle(() => ({
   control: {
     borderColor: 'content.6',
     background: 'transparent',
-    borderRadius: '3px',
+    // transition: 'all 0.15s ease-in-out',
+    // borderWidth: '1.5px',
     _hover: {
-      background: 'transparent',
       borderColor: 'content.6',
-    },
-    _indeterminate: {
-      background: 'primary.3',
-      borderColor: 'primary.3',
-      _hover: {
-        background: 'primary.3',
-        borderColor: 'primary.3',
-      },
+      background: 'transparent',
     },
     _checked: {
       background: 'primary.3',
@@ -92,11 +85,12 @@ const sizes = {
   }),
 }
 
-const Checkbox = defineMultiStyleConfig({
+const Radio = defineMultiStyleConfig({
   baseStyle,
   sizes,
   defaultProps: {
     size: 'md',
   },
 })
-export default Checkbox
+
+export default Radio

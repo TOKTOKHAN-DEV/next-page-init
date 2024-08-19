@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "@chakra-ui/cli": "^2.4.1",
+    "@chakra-ui/theme-tools": "^2.0.18",
     "@changesets/cli": "^2.27.5",
     "@next/bundle-analyzer": "^14.2.4",
     "@testing-library/jest-dom": "^6.4.6",
