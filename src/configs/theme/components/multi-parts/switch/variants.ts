@@ -12,11 +12,17 @@ export const baseStyleTrack = defineStyle((props) => {
       _dark: {
         bgColor: 'primary.4',
       },
+      _disabled: {
+        bgColor: 'primary.3',
+        _dark: {
+          bgColor: 'primary.3',
+        },
+      },
     },
     _disabled: {
-      bgColor: 'primary.3',
+      bgColor: 'background.basic.3',
       _dark: {
-        bgColor: 'primary.3',
+        bgColor: 'background.basic.3',
       },
     },
   }

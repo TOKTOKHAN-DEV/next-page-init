@@ -8,7 +8,7 @@ interface SectionProps {
 }
 const Section = ({ title, children }: SectionProps) => {
   return (
-    <VStack align={'start'} w={'100%'} gap={'8px'}>
+    <VStack align={'start'} w={'100%'} gap={'8px'} alignContent={'center'}>
       <Text textStyle={'pre-heading-02'}>{title}</Text>
       {children}
     </VStack>

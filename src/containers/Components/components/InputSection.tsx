@@ -5,7 +5,6 @@ import FormHelper from '@/components/FormHelper'
 export const InputSection = () => {
   return (
     <VStack w="300px" spacing="20px" my="24px">
-      <Heading size="md">Input</Heading>
       <FormHelper label="주제" message={{ help: '설명' }}>
         <Input placeholder="텍스트를 입력해주세요" />
       </FormHelper>
