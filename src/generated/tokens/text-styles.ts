@@ -14,8 +14,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 800,
     fontSize: {
-      sm: '72px',
       base: '48px',
+      sm: '72px',
       md: '80px',
     },
     lineHeight: '139.9999976158142%',
@@ -26,8 +26,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 700,
     fontSize: {
-      sm: '56px',
       base: '40px',
+      sm: '56px',
       md: '64px',
     },
     lineHeight: '139.9999976158142%',
@@ -38,8 +38,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 700,
     fontSize: {
-      sm: '40px',
       base: '32px',
+      sm: '40px',
       md: '48px',
     },
     lineHeight: '150%',
@@ -50,8 +50,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 700,
     fontSize: {
-      sm: '28px',
       base: '24px',
+      sm: '28px',
       md: '32px',
     },
     lineHeight: '150%',
@@ -62,8 +62,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 700,
     fontSize: {
-      sm: '24px',
       base: '20px',
+      sm: '24px',
       md: '24px',
     },
     lineHeight: '150%',
@@ -74,8 +74,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '20px',
       base: '18px',
+      sm: '20px',
       md: '20px',
     },
     lineHeight: '150%',
@@ -86,8 +86,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '18px',
       base: '16px',
+      sm: '18px',
       md: '18px',
     },
     lineHeight: '150%',
@@ -98,8 +98,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '16px',
       base: '16px',
+      sm: '16px',
       md: '16px',
     },
     lineHeight: '160.0000023841858%',
@@ -126,8 +126,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '16px',
       base: '16px',
+      sm: '16px',
       md: '16px',
     },
     lineHeight: '160.0000023841858%',
@@ -138,8 +138,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 500,
     fontSize: {
-      sm: '16px',
       base: '16px',
+      sm: '16px',
       md: '16px',
     },
     lineHeight: '160.0000023841858%',
@@ -150,8 +150,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '14px',
       base: '14px',
+      sm: '14px',
       md: '14px',
     },
     lineHeight: '160.0000023841858%',
@@ -162,8 +162,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 500,
     fontSize: {
-      sm: '14px',
       base: '14px',
+      sm: '14px',
       md: '14px',
     },
     lineHeight: '160.0000023841858%',
@@ -174,8 +174,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '12px',
       base: '12px',
+      sm: '12px',
       md: '12px',
     },
     lineHeight: '160.0000023841858%',
@@ -186,8 +186,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 400,
     fontSize: {
-      sm: '12px',
       base: '12px',
+      sm: '12px',
       md: '12px',
     },
     lineHeight: '160.0000023841858%',
@@ -198,8 +198,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 600,
     fontSize: {
-      sm: '10px',
       base: '10px',
+      sm: '10px',
       md: '10px',
     },
     lineHeight: '160.0000023841858%',
@@ -210,8 +210,8 @@ export const textStyles = {
     textDecoration: 'none',
     fontWeight: 400,
     fontSize: {
-      sm: '10px',
       base: '10px',
+      sm: '10px',
       md: '10px',
     },
     lineHeight: '160.0000023841858%',
