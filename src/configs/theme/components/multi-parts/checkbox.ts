@@ -3,53 +3,42 @@ import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 
 import { textStyles } from '@/generated/tokens/text-styles'
 
+import { defineVariants } from './radio'
+
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys)
 
 const baseStyle = definePartsStyle(() => ({
   control: {
-    borderColor: 'content.6',
-    background: 'transparent',
     borderRadius: '3px',
-    _hover: {
-      background: 'transparent',
-      borderColor: 'content.6',
-    },
+    ...defineVariants({
+      border: 'content.6',
+      bg: 'transparent',
+    }),
     _indeterminate: {
-      background: 'primary.3',
-      borderColor: 'primary.3',
-      _hover: {
-        background: 'primary.3',
-        borderColor: 'primary.3',
-      },
+      ...defineVariants({
+        border: 'primary.3',
+        bg: 'primary.3',
+      }),
     },
     _checked: {
-      background: 'primary.3',
-      borderColor: 'primary.3',
-      _hover: {
-        background: 'primary.3',
-        borderColor: 'primary.3',
-      },
+      ...defineVariants({
+        border: 'primary.3',
+        bg: 'primary.3',
+      }),
     },
     _disabled: {
       color: 'content.7',
-      borderColor: 'content.7',
-      background: 'transparent',
-      _hover: {
-        color: 'content.7',
-        borderColor: 'content.7',
-        background: 'transparent',
-      },
+      ...defineVariants({
+        border: 'content.7',
+        bg: 'transparent',
+      }),
       _checked: {
-        background: 'primary.2',
-        borderColor: 'primary.2',
         color: 'content.8',
-        _hover: {
-          background: 'primary.2',
-          color: 'content.8',
-
-          borderColor: 'primary.2',
-        },
+        ...defineVariants({
+          border: 'primary.2',
+          bg: 'primary.2',
+        }),
       },
     },
   },
@@ -58,18 +47,14 @@ const baseStyle = definePartsStyle(() => ({
     color: 'text.tertiary',
     transition: 'all 0.2s ease-in-out',
     lineHeight: '24px',
-
     _hover: {
       color: 'text.tertiary',
     },
-
     _focus: {
       color: 'text.primary',
     },
-
     _checked: {
       color: 'text.primary',
-
       _hover: {
         color: 'text.primary',
       },
