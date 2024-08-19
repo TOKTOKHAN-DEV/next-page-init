@@ -34,7 +34,7 @@ const AlertExample = () => {
             <Button
               onClick={onCloseAlertModal}
               size="lg"
-              variant="outlineSecondary"
+              variant="outline-secondary"
               w="100%"
             >
               취소

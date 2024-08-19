@@ -102,6 +102,7 @@ interface ButtonAnatomyProps {
   color: ChakraProps['color']
   bgColor: ChakraProps['color']
   borderColor?: ChakraProps['color']
+  otherStyle?: ChakraProps
 }
 
 type DefineVariantV2Props = {
@@ -119,21 +120,15 @@ const defineVariantV2 = ({
 }: DefineVariantV2Props) => {
   return {
     ...basic,
+    ...basic.otherStyle,
     borderWidth: basic?.borderColor ? '1px' : '0px',
-    outline: 'none',
-    transition: 'all 0.2s ease-in-out',
 
     _hover: {
       ...hover,
-      _disabled: { opacity: 1, ...disabled },
+      _disabled: disabled,
     },
     _active: active,
-    _disabled: { opacity: 1, ...disabled },
-
-    _focus: { boxShadow: 'none', outline: 'none' },
-    _focusVisible: {
-      ringColor: 'transparent',
-    },
+    _disabled: disabled,
   }
 }
 
@@ -164,7 +159,7 @@ const outlineSecondary = defineVariantV2({
     bgColor: 'background.basic.1',
     borderColor: 'border.basic.2',
   },
-  hover: { bgColor: 'background.basic.3' },
+  hover: { bgColor: 'transparent' },
   active: { bgColor: 'background.basic.4' },
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
@@ -180,11 +175,39 @@ const outlineAssistive = defineVariantV2({
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
+const primaryText = defineVariantV2({
+  basic: {
+    color: 'primary.3',
+    bgColor: 'transparent',
+    otherStyle: {
+      p: '0px',
+    },
+  },
+  hover: { color: 'primary.4', bgColor: 'transparent' },
+  active: { color: 'primary.5', bgColor: 'transparent' },
+  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+})
+
+const grayText = defineVariantV2({
+  basic: {
+    color: 'content.3',
+    bgColor: 'transparent',
+    otherStyle: {
+      p: '0px',
+    },
+  },
+  hover: { color: 'content.4', bgColor: 'transparent' },
+  active: { color: 'content.5', bgColor: 'transparent' },
+  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+})
+
 export const variants = {
-  solidPrimary,
-  outlinePrimary,
-  outlineSecondary,
-  outlineAssistive,
+  'solid-primary': solidPrimary,
+  'outline-primary': outlinePrimary,
+  'outline-secondary': outlineSecondary,
+  'outline-assistive': outlineAssistive,
+  'primary-text': primaryText,
+  'gray-text': grayText,
   primary,
   point,
   line,

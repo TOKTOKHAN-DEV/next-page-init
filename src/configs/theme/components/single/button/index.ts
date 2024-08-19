@@ -4,22 +4,27 @@ import { sizes } from './sizes'
 import { variants } from './variants'
 
 const baseStyle = defineStyle({
-  lineHeight: '1.2',
-  borderRadius: 'md',
-  fontWeight: 'semibold',
+  outline: 'none',
+  transition: 'all 0.2s ease-in-out',
+
   transitionProperty: 'common',
   transitionDuration: 'normal',
-  _focusVisible: {
-    boxShadow: 'outline',
-  },
+
   _disabled: {
     opacity: 1,
     cursor: 'not-allowed',
     boxShadow: 'none',
   },
+  _focus: { boxShadow: 'none', outline: 'none' },
+  _focusVisible: {
+    boxShadow: 'outline',
+    ringColor: 'transparent',
+  },
   _hover: {
     _disabled: {
-      bg: 'initial',
+      opacity: 1,
+      cursor: 'not-allowed',
+      boxShadow: 'none',
     },
   },
 })
@@ -29,7 +34,7 @@ const Button = defineStyleConfig({
   sizes,
   variants,
   defaultProps: {
-    variant: 'primary',
+    variant: 'solid-primary',
     size: 'md',
     colorScheme: 'primary.3',
   },
