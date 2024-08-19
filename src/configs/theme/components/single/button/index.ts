@@ -13,7 +13,7 @@ const baseStyle = defineStyle({
     boxShadow: 'outline',
   },
   _disabled: {
-    opacity: 0.4,
+    opacity: 1,
     cursor: 'not-allowed',
     boxShadow: 'none',
   },
