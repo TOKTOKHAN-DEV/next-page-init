@@ -1,5 +1,6 @@
 import Checkbox from './multi-parts/checkbox'
 import Input from './multi-parts/input'
+import Modal from './multi-parts/modal'
 import Badge from './single/badge'
 import Button from './single/button'
 import Container from './single/container'
@@ -14,4 +15,5 @@ export const components = {
   Input,
   Spinner,
   Tooltip,
+  Modal,
 }
