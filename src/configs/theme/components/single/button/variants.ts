@@ -125,10 +125,19 @@ const defineVariantV2 = ({
 
     _hover: {
       ...hover,
-      _disabled: disabled,
+      _disabled: {
+        ...disabled,
+        ...disabled.otherStyle,
+      },
     },
-    _active: active,
-    _disabled: disabled,
+    _active: {
+      ...active,
+      ...active.otherStyle,
+    },
+    _disabled: {
+      ...disabled,
+      ...disabled.otherStyle,
+    },
   }
 }
 
