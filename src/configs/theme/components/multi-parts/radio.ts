@@ -1,4 +1,5 @@
 import { radioAnatomy as parts } from '@chakra-ui/anatomy'
+import { ChakraProps } from '@chakra-ui/react'
 import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system'
 
 import textStyles from '../../foundations/text-styles'
@@ -6,12 +7,12 @@ import textStyles from '../../foundations/text-styles'
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys)
 
-export const defineVariants = ({
+const defineStyle = ({
   border,
   bg,
 }: {
-  border: string
-  bg: string
+  border: ChakraProps['color']
+  bg: ChakraProps['color']
 }) => ({
   borderColor: border,
   background: bg,
@@ -23,24 +24,24 @@ export const defineVariants = ({
 
 const baseStyle = definePartsStyle(() => ({
   control: {
-    ...defineVariants({
+    ...defineStyle({
       border: 'content.6',
       bg: 'transparent',
     }),
     _checked: {
-      ...defineVariants({
+      ...defineStyle({
         border: 'primary.3',
         bg: 'primary.3',
       }),
     },
     _disabled: {
-      ...defineVariants({
+      ...defineStyle({
         border: 'content.7',
         bg: 'transparent',
       }),
       _checked: {
         color: 'content.8',
-        ...defineVariants({
+        ...defineStyle({
           border: 'primary.2',
           bg: 'primary.2',
         }),

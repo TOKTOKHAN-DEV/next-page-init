@@ -1,102 +1,4 @@
-import { ChakraProps, defineStyle } from '@chakra-ui/react'
-
-type DefineVariantProps = {
-  bgColor: ChakraProps['color']
-  hoverColor: ChakraProps['color']
-  color: ChakraProps['color']
-  disabledOpacity: string
-  borderColor?: ChakraProps['color']
-}
-
-const defineVariant = ({
-  bgColor,
-  hoverColor,
-  color,
-  disabledOpacity,
-  borderColor,
-}: DefineVariantProps) => {
-  return defineStyle(() => {
-    return {
-      bg: bgColor,
-      color: color,
-      border: '1px solid',
-      outline: 'none',
-      borderColor: borderColor || 'transparent',
-      transition: 'all 0.2s ease-in-out',
-      _hover: {
-        bg: hoverColor,
-        _disabled: {
-          willChange: 'opacity',
-          bg: bgColor,
-          borderColor: borderColor || 'transparent',
-          opacity: disabledOpacity,
-        },
-      },
-      _active: { bg: hoverColor },
-      _disabled: {
-        willChange: 'opacity',
-        bg: bgColor,
-        borderColor: borderColor || 'transparent',
-        opacity: disabledOpacity,
-      },
-      _focus: { boxShadow: 'none', outline: 'none' },
-      _focusVisible: {
-        ringColor: 'transparent',
-      },
-    }
-  })
-}
-
-const primary = defineVariant({
-  bgColor: 'primary.3',
-  hoverColor: 'primary.4',
-  color: 'white',
-  disabledOpacity: '0.3',
-  borderColor: 'transparent',
-})
-
-const point = defineStyle({
-  border: '1px solid',
-  borderColor: 'gray.500',
-  background: 'white',
-  color: 'primary.500',
-})
-
-const line = defineStyle({
-  background: 'white',
-  color: 'content.1',
-})
-
-const unstyled = defineStyle({
-  bg: 'none',
-  color: 'inherit',
-  display: 'inline',
-  lineHeight: 'inherit',
-  m: '0',
-  p: '0',
-})
-
-const getPrimaryByColor = (colorScheme: string) => {
-  const arr = colorScheme.split('.')
-  const colorKey = arr.slice(0, -1).join('.')
-  const colorLv = Number(arr.at(-1))
-
-  // 정해진 토큰 형식이 아니라면 scheme 그대로 반환, 조건 추가될 수 있음.
-  const isNotFormatted = isNaN(colorLv)
-  if (isNotFormatted) {
-    return {
-      main: colorScheme,
-      hover: colorScheme,
-      active: colorScheme,
-    }
-  }
-
-  return {
-    main: colorScheme,
-    hover: `${colorKey}.${colorLv + 1}`,
-    active: `${colorKey}.${colorLv + 2}`,
-  }
-}
+import { ChakraProps } from '@chakra-ui/react'
 
 interface ButtonAnatomyProps {
   color: ChakraProps['color']
@@ -105,19 +7,19 @@ interface ButtonAnatomyProps {
   otherStyle?: ChakraProps
 }
 
-type DefineVariantV2Props = {
+type DefineVariantProps = {
   basic: ButtonAnatomyProps
   hover: Partial<ButtonAnatomyProps>
   active: Partial<ButtonAnatomyProps>
   disabled: Partial<ButtonAnatomyProps>
 }
 
-const defineVariantV2 = ({
+const defineVariant = ({
   basic,
   active,
   disabled,
   hover,
-}: DefineVariantV2Props) => {
+}: DefineVariantProps) => {
   return {
     ...basic,
     ...basic.otherStyle,
@@ -141,7 +43,7 @@ const defineVariantV2 = ({
   }
 }
 
-const solidPrimary = defineVariantV2({
+const solidPrimary = defineVariant({
   basic: {
     bgColor: 'primary.3',
     color: 'content.8',
@@ -151,7 +53,7 @@ const solidPrimary = defineVariantV2({
   disabled: { color: 'content.5', bgColor: 'background.basic.4' },
 })
 
-const outlinePrimary = defineVariantV2({
+const outlinePrimary = defineVariant({
   basic: {
     color: 'primary.3',
     bgColor: 'background.basic.1',
@@ -162,7 +64,7 @@ const outlinePrimary = defineVariantV2({
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
-const outlineSecondary = defineVariantV2({
+const outlineSecondary = defineVariant({
   basic: {
     color: 'primary.3',
     bgColor: 'background.basic.1',
@@ -173,7 +75,7 @@ const outlineSecondary = defineVariantV2({
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
-const outlineAssistive = defineVariantV2({
+const outlineAssistive = defineVariant({
   basic: {
     color: 'content.2',
     bgColor: 'background.basic.1',
@@ -184,7 +86,7 @@ const outlineAssistive = defineVariantV2({
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
-const primaryText = defineVariantV2({
+const primaryText = defineVariant({
   basic: {
     color: 'primary.3',
     bgColor: 'transparent',
@@ -197,7 +99,7 @@ const primaryText = defineVariantV2({
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
-const grayText = defineVariantV2({
+const grayText = defineVariant({
   basic: {
     color: 'content.3',
     bgColor: 'transparent',
@@ -217,8 +119,4 @@ export const variants = {
   'outline-assistive': outlineAssistive,
   'primary-text': primaryText,
   'gray-text': grayText,
-  primary,
-  point,
-  line,
-  unstyled,
 }

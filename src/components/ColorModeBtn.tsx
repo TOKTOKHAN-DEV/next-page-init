@@ -6,7 +6,7 @@ const ColorModeBtn = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Button
-      variant="primary"
+      variant={'solid-primary'}
       position="fixed"
       zIndex={'sticky'}
       top="100px"

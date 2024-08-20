@@ -1,41 +1,54 @@
 import { checkboxAnatomy as parts } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
+import { ChakraProps, createMultiStyleConfigHelpers } from '@chakra-ui/react'
 
 import { textStyles } from '@/generated/tokens/text-styles'
 
-import { defineVariants } from './radio'
+const defineStyle = ({
+  border,
+  bg,
+}: {
+  border: ChakraProps['color']
+  bg: ChakraProps['color']
+}) => ({
+  borderColor: border,
+  background: bg,
+  _hover: {
+    borderColor: border,
+    background: bg,
+  },
+})
 
 const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys)
 
-const baseStyle = definePartsStyle(() => ({
+const baseStyle = definePartsStyle({
   control: {
     borderRadius: '3px',
-    ...defineVariants({
+    ...defineStyle({
       border: 'content.6',
       bg: 'transparent',
     }),
     _indeterminate: {
-      ...defineVariants({
+      ...defineStyle({
         border: 'primary.3',
         bg: 'primary.3',
       }),
     },
     _checked: {
-      ...defineVariants({
+      ...defineStyle({
         border: 'primary.3',
         bg: 'primary.3',
       }),
     },
     _disabled: {
       color: 'content.7',
-      ...defineVariants({
+      ...defineStyle({
         border: 'content.7',
         bg: 'transparent',
       }),
       _checked: {
         color: 'content.8',
-        ...defineVariants({
+        ...defineStyle({
           border: 'primary.2',
           bg: 'primary.2',
         }),
@@ -60,7 +73,7 @@ const baseStyle = definePartsStyle(() => ({
       },
     },
   },
-}))
+})
 
 const sizes = {
   sm: definePartsStyle({

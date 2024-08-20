@@ -1,9 +1,6 @@
 import { Center, Text } from '@chakra-ui/react'
-import { useTheme } from '@emotion/react'
 
 function Home() {
-  const theme = useTheme()
-  console.log('theme', theme)
   return (
     <Center
       h={'100%'}
