@@ -1,8 +1,6 @@
 const styles = {
   global: () => ({
-    body: {
-      fontFamily: 'Pretendard',
-    },
+    body: {},
     '#__next': {},
   }),
 }

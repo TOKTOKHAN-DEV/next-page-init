@@ -6,11 +6,21 @@ import { genImg } from '@toktokhan-dev/cli-plugin-gen-img'
 import { genRoutePage } from '@toktokhan-dev/cli-plugin-gen-route-pages'
 import { genTheme } from '@toktokhan-dev/cli-plugin-gen-theme-chakra'
 
-const config: RootConfig = {
+const config: RootConfig<{
+  plugins: [
+    typeof genImg,
+    typeof genRoutePage,
+    typeof genApi,
+    typeof genTheme,
+    typeof genIcon,
+    typeof commit,
+  ]
+}> = {
   plugins: [genImg, genRoutePage, genApi, genTheme, genIcon, commit],
   'gen:img': {
     input: 'public/images',
     oneDepth: true,
+    basePath: '/images',
   },
   'gen:route': {
     oneDepth: true,
