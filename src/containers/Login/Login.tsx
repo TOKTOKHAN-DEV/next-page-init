@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-
 import { useRouter } from 'next/router'
 
 import {
@@ -34,7 +32,9 @@ import Admonition from '@/components/@Templates/Admonition'
 import TemplateLayout from '@/components/@Templates/TemplateLayout'
 import { ENV } from '@/configs/env'
 
-const kakao = new Kakao(ENV.GOOGLE_CLIENT_ID)
+import { OauthCallback } from '../Social/types/oauth'
+
+const kakao = new Kakao(ENV.KAKAO_CLIENT_ID)
 const naver = new Naver(ENV.NAVER_CLIENT_ID)
 const google = new Google(ENV.GOOGLE_CLIENT_ID)
 const facebook = new Facebook(ENV.FACEBOOK_CLIENT_ID)
@@ -44,20 +44,21 @@ function Login() {
   const router = useRouter()
   const { returnUrl } = router.query
   const { colorMode } = useColorMode()
-  const { data } = useOauthPopupListener<{
-    returnUrl: string
-    type: string
-  }>({
+
+  useOauthPopupListener<OauthCallback>({
     onSuccess: (res) => {
-      console.log(res)
-      alert(`로그인 성공: ${JSON.stringify(res)}`)
+      // if (!res?.code || !res.state) return // TODO: error handling
+      // mutateAsync({
+      //   data: {
+      //     code: res.code,
+      //     type: res.state.type,
+      //   },
+      // }).then((res) => useLocalStorage.setState({ token: res }))
+    },
+    onFail: () => {
+      // console.log('fail')
     },
   })
-
-  useEffect(() => {
-    console.log({ data })
-  }, [data])
-
   return (
     <TemplateLayout title={'Login'}>
       <Admonition title="로그인 페이지" type="info">
@@ -84,7 +85,7 @@ function Login() {
             kakao.loginToLink({
               redirect_uri: `${window.origin}/social/callback`,
               state: {
-                returnUrl: returnUrl || '/login',
+                returnUrl: returnUrl || '/',
                 type: 'kakao',
               },
             })
@@ -96,7 +97,7 @@ function Login() {
             naver.loginToLink({
               redirect_uri: `${window.origin}/social/callback`,
               state: {
-                returnUrl: returnUrl || '/login',
+                returnUrl: returnUrl || '/',
                 type: 'naver',
               },
             })
@@ -109,7 +110,7 @@ function Login() {
               redirect_uri: `${window.origin}/social/callback`,
               scope: [GOOGLE_AUTH_SCOPE.email, GOOGLE_AUTH_SCOPE.profile],
               state: {
-                returnUrl: returnUrl || '/login',
+                returnUrl: returnUrl || '/',
                 type: 'google',
               },
             })
@@ -121,7 +122,7 @@ function Login() {
             facebook.loginToLink({
               redirect_uri: `${window.origin}/social/callback`,
               state: {
-                returnUrl: returnUrl || '/login',
+                returnUrl: returnUrl || '/',
                 type: 'facebook',
               },
             })
@@ -133,7 +134,7 @@ function Login() {
             apple.loginToLink({
               redirect_uri: `${window.origin}/social/callback`,
               state: {
-                returnUrl: returnUrl || '/login',
+                returnUrl: returnUrl || '/',
                 type: 'apple',
               },
             })

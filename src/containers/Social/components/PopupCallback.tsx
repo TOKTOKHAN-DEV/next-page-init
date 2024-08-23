@@ -2,8 +2,10 @@ import { useOauthPopupCallback } from '@toktokhan-dev/react-web'
 
 import Splash from '@/components/Splash'
 
+import { OauthCallback } from '../types/oauth'
+
 const PopupCallback = () => {
-  useOauthPopupCallback({
+  useOauthPopupCallback<OauthCallback>({
     onSuccess: (res) => {
       console.log('succeed to login', res)
       // res?.closePopup({
@@ -12,7 +14,7 @@ const PopupCallback = () => {
     },
     onFail: (res) => {
       console.log('failed to login', res)
-      // res.closePopup()
+      // res?.closePopup()
     },
   })
 

@@ -7,16 +7,17 @@ function Home() {
       color={'text.primary'}
       borderRadius={'8px'}
       flexDir={'column'}
+      gap={'20px'}
     >
       <Text
         color={'text.brand'}
         textStyle={'pre-heading-01'}
         textAlign={'center'}
       >
-        TOKTOKHAN DEV
+        TOKTOKHAN.DEV
       </Text>
       <Text color={'text.primary'} textStyle={'pre-heading-02'}>
-        Next page template
+        Next Page Template
       </Text>
     </Center>
   )

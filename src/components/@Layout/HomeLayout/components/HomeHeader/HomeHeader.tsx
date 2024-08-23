@@ -14,13 +14,15 @@ import { LogoIcon, MenuIcon } from 'generated/icons/MyIcons'
 import ClientOnly from '@/components/ClientOnly'
 import { ROUTES } from '@/generated/path/routes'
 import { useAuth } from '@/hooks/useAuth'
-import { tokenStorage } from '@/stores/local/token'
+import { useLocalStorage } from '@/stores/local/state'
 
 import HomeHeaderDrawer from './components/HomeHeaderDrawer'
 
 const HomeHeader = ({ ...props }: ContainerProps) => {
   const { isOpen, onClose, onOpen } = useDisclosure()
   const { isLogin } = useAuth()
+  const resetToken = useLocalStorage((store) => store.reset)
+
   return (
     <Container
       variant={'basis'}
@@ -39,7 +41,7 @@ const HomeHeader = ({ ...props }: ContainerProps) => {
             <Button
               variant={'line'}
               size={'sm'}
-              onClick={() => tokenStorage?.remove()}
+              onClick={() => resetToken('token')}
             >
               Logout
             </Button>
