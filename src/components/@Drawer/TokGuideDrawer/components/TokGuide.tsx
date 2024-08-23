@@ -10,6 +10,7 @@ import {
 
 import { Bookmarks } from './contents/Bookmarks'
 import { Examples } from './contents/Examples'
+import State from './contents/State/State'
 
 export const TokGuide = () => {
   return (
@@ -24,6 +25,7 @@ export const TokGuide = () => {
         <TabList>
           <Tab>Bookmarks</Tab>
           <Tab>Examples</Tab>
+          <Tab>State</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -31,6 +33,9 @@ export const TokGuide = () => {
           </TabPanel>
           <TabPanel>
             <Examples />
+          </TabPanel>
+          <TabPanel>
+            <State />
           </TabPanel>
         </TabPanels>
       </Tabs>

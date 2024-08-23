@@ -4,7 +4,6 @@ import { NextSeo } from 'next-seo'
 
 import HomeLayout from '@/components/@Layout/HomeLayout'
 import Home from '@/containers/Home'
-import { withHomePageProvider } from '@/containers/Home/context/useHomePageContext'
 
 function HomePage() {
   return (
@@ -17,4 +16,4 @@ function HomePage() {
   )
 }
 
-export default withHomePageProvider(HomePage)
+export default HomePage

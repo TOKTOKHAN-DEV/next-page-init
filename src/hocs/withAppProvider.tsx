@@ -8,7 +8,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@/configs/react-query'
 import theme from '@/configs/theme'
 import fonts from '@/configs/theme/foundations/typography/fonts'
-import { GlobalContextProvider } from '@/stores/global/state'
+import { GlobalStoreProvider } from '@/stores/global/state'
 
 const coveredTheme = {
   ...theme,
@@ -20,9 +20,9 @@ function withAppProvider(AppComponent: FC<AppProps>) {
     return (
       <QueryClientProvider client={queryClient}>
         <ChakraProvider resetCSS theme={coveredTheme}>
-          <GlobalContextProvider>
+          <GlobalStoreProvider>
             <AppComponent {...props} />
-          </GlobalContextProvider>
+          </GlobalStoreProvider>
         </ChakraProvider>
       </QueryClientProvider>
     )

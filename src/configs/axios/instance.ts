@@ -1,16 +1,21 @@
+import Router from 'next/router'
+
 import { apiLogger, styledConsole } from '@toktokhan-dev/react-universal'
 
 import axios, { AxiosError } from 'axios'
 
 import { ENV } from '@/configs/env'
-import { tokenStorage } from '@/stores/local/token'
+// import { AuthApi } from '@/generated/apis/Auth/Auth.api'
+import { ROUTES } from '@/generated/path/routes'
+import { useGlobalStore } from '@/stores/global/state'
+import { useLocalStorage } from '@/stores/local/state'
 
 // import { retryRequestManager } from './retry-request-manager'
 
 const isDev = ENV.NODE_ENV === 'development'
 
 const instance = axios.create({
-  baseURL: ENV.API_BASE_URL,
+  baseURL: ENV.API_BASE_URL || 'http://localhost:5001',
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
@@ -22,7 +27,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = tokenStorage?.get()
+    const token = useLocalStorage.getState().token
     const isAccess = !!token && !!token.access_token
     if (isAccess) {
       config.headers.setAuthorization(`Bearer ${token.access_token}`)
@@ -57,7 +62,7 @@ instance.interceptors.response.use(
         throw new Error('expired token: please set refresh token logic')
         // return retry({
         //   getToken: async () => {
-        //     const refreshToken = tokenStorage?.get()?.refresh_token
+        //     const refreshToken = useLocalStorage.getState().token?.refresh_token
 
         //     if (!refreshToken) throw new Error('refresh token is not exist')
 
@@ -66,7 +71,7 @@ instance.interceptors.response.use(
         //         refresh_token: refreshToken,
         //       },
         //     })
-        //     tokenStorage?.set(token)
+        //     useLocalStorage.getState().set({ token })
 
         //     return token.access_token
         //   },
@@ -76,16 +81,17 @@ instance.interceptors.response.use(
         //     return instance.request(reqData)
         //   },
         //   onError: () => {
-        //     tokenStorage?.remove()
+        //     useLocalStorage.getState().reset('token')
         //     return Promise.reject(error)
         //   },
         // })
       }
 
       if (isUnAuthError) {
-        // deleteToken();
-        // if (isClient) Router.push(ROUTE.LOGIN);
-        // return Promise.reject(error);
+        useLocalStorage.getState().reset('token')
+        const isClient = useGlobalStore.getState().isClient
+        if (isClient) Router.push(ROUTES.LOGIN_MAIN)
+        return Promise.reject(error)
       }
 
       return Promise.reject(error)
