@@ -33,7 +33,7 @@ const HomeHeader = ({ ...props }: ContainerProps) => {
       {...props}
     >
       <Link variant={'unstyled'} href={ROUTES.MAIN}>
-        <LogoIcon boxSize={'74px'} color={'icon.brand'} />
+        <LogoIcon boxSize={'74px'} color={'content.1'} />
       </Link>
       <HStack spacing="16px">
         <ClientOnly fallback={<Spinner size={'sm'} />}>
@@ -45,14 +45,19 @@ const HomeHeader = ({ ...props }: ContainerProps) => {
             >
               Logout
             </Button>
-          : <Link variant={'line'} size={'sm'} href={ROUTES.LOGIN_MAIN}>
+          : <Link
+              color={'content.1'}
+              variant={'line'}
+              size={'sm'}
+              href={ROUTES.LOGIN_MAIN}
+            >
               Login
             </Link>
           }
         </ClientOnly>
         <IconButton //
           size={'xs'}
-          icon={<MenuIcon w="24px" h="24px" color={'icon.primary'} />}
+          icon={<MenuIcon w="24px" h="24px" color={'content.1'} />}
           onClick={onOpen}
           cursor="pointer"
           bg="transparent"

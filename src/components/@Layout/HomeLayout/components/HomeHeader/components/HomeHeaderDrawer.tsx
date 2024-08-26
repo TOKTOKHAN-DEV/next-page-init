@@ -13,7 +13,7 @@ const HomeHeaderDrawer = ({ bodyProps, ...props }: HomeHeaderDrawerProps) => {
       body={<Text> body</Text>}
       footer={<Text> footer</Text>}
       styles={{
-        content: { bg: 'background.primary' },
+        content: { bg: 'white' },
         body: { ...bodyProps },
       }}
       {...props}

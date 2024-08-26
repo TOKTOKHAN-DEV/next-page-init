@@ -47,9 +47,9 @@ const defineVariant = ({
 }
 
 const primary = defineVariant({
-  bgColor: 'button.primary',
-  hoverColor: 'button.primary.hover',
-  color: 'text.primary.inverse',
+  bgColor: 'primary.3',
+  hoverColor: 'primary.4',
+  color: 'white',
   disabledOpacity: '0.3',
   borderColor: 'transparent',
 })
@@ -63,7 +63,7 @@ const point = defineStyle({
 
 const line = defineStyle({
   background: 'white',
-  color: 'gray.700',
+  color: 'content.1',
 })
 
 const unstyled = defineStyle({

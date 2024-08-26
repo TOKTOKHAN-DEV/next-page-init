@@ -14,13 +14,13 @@ export const HOME_HEADER_VARIANTS: Record<
     header: { bg: '' },
     drawer: { bg: 'white' },
     pointColor: 'white',
-    subColor: 'background.brand',
+    subColor: 'primary.3',
   },
   light: {
-    header: { bg: 'background.brand' },
+    header: { bg: 'primary.3' },
     drawer: { bg: 'white' },
     pointColor: 'white',
-    subColor: 'background.primary',
+    subColor: 'white',
   },
   transparent: {
     header: { bg: 'transparent' },

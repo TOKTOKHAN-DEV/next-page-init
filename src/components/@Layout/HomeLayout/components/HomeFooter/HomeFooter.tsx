@@ -16,7 +16,7 @@ export default function HomeFooter({ ...props }: ContainerProps) {
       {...props}
     >
       <Link variant={'unstyled'} href={ROUTES.MAIN}>
-        <LogoIcon boxSize={'50px'} color={'icon.tertiary'} />
+        <LogoIcon boxSize={'50px'} color={'content.1'} />
       </Link>
     </Container>
   )

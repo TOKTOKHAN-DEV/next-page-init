@@ -11,25 +11,25 @@ const AdmonitionData = {
   info: {
     color: 'text.brand',
     bar: 'background.brand.active',
-    bg: 'background.primary',
+    bg: 'white',
     icon: 'ℹ',
   },
   warning: {
     color: 'yellow',
     bar: 'background.brand.inverse',
-    bg: 'background.primary',
+    bg: 'white',
     icon: 'ℹ',
   },
   danger: {
     color: 'red',
     bar: 'background.brand.inverse',
-    bg: 'background.primary',
+    bg: 'white',
     icon: 'ℹ',
   },
   success: {
     color: 'green',
     bar: 'background.brand.inverse',
-    bg: 'background.primary',
+    bg: 'white',
     icon: 'ℹ',
   },
 } as const
@@ -58,7 +58,7 @@ const Admonition = ({
         left={0}
       />
       <Text mb={'10px'} textStyle={'pre-heading-05'}>
-        <Text as={'span'} color={'text.brand'} fontSize={'20px'}>
+        <Text as={'span'} color={'primary.3'} fontSize={'20px'}>
           {AdmonitionData[type].icon}
         </Text>
         {type?.toUpperCase()}

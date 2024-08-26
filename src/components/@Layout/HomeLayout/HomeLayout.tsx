@@ -79,7 +79,7 @@ const HomeLayout = ({
         w={'100%'}
         display="flex"
         justifyContent={'center'}
-        bg={'background.primary'}
+        bg={'white'}
         pt={isScroll ? '10px' : '0'}
         {...scrollConfig}
       >
@@ -90,7 +90,7 @@ const HomeLayout = ({
         area={'main'}
         w={'100%'}
         minW={'100%'}
-        bg={'background.primary'}
+        bg={'white'}
         {...containerProps}
       >
         {content}
@@ -101,7 +101,7 @@ const HomeLayout = ({
         h={'100%'}
         w={'100%'}
         py={'30px'}
-        bg={'background.primary'}
+        bg={'white'}
       >
         {footer}
       </GridItem>

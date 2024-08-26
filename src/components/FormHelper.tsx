@@ -64,7 +64,7 @@ const FormHelper = ({
         <FormErrorMessage {...errorTextProps}>{errorText}</FormErrorMessage>
       )}
       {isShowSuccessText && (
-        <FormHelperText color="custom.primary" {...successTextProps}>
+        <FormHelperText color="accent.blue.1" {...successTextProps}>
           {successText}
         </FormHelperText>
       )}

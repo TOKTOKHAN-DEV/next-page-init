@@ -35,7 +35,7 @@ export default function DrawerBasis({
     <>
       <Drawer size="sm" placement="right" {...props}>
         <DrawerOverlay />
-        <DrawerContent bg="background.primary" {...styles?.content}>
+        <DrawerContent bg="white" {...styles?.content}>
           <DrawerCloseButton //
             w="40px"
             h="40px"

@@ -63,15 +63,14 @@ function Login() {
     <TemplateLayout title={'Login'}>
       <Admonition title="로그인 페이지" type="info">
         <Box mb={'10px'} textStyle={'pre-body-03'}>
-          로그인 한 유저 Block: <Code color="text.primary">withUnAuthGard</Code>
+          로그인 한 유저 Block: <Code color="content.1">withUnAuthGard</Code>
           <UnorderedList fontSize="14px" px="20px">
             <ListItem>로그인 페이지</ListItem>
             <ListItem>회원가입 페이지</ListItem>
           </UnorderedList>
         </Box>
         <Box textStyle={'pre-body-03'}>
-          로그인 안 한 유저 Block:{' '}
-          <Code color="text.primary">withAuthGard</Code>
+          로그인 안 한 유저 Block: <Code color="content.1">withAuthGard</Code>
           <UnorderedList fontSize="14px" px="20px">
             <ListItem>마이 페이지</ListItem>
             <ListItem>주문 페이지</ListItem>
