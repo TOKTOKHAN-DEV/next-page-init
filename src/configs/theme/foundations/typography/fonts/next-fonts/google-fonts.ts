@@ -1,7 +1,5 @@
-import { Akronim as _Akronim } from 'next/font/google'
+import { Roboto_Mono } from 'next/font/google'
 
-export const Akronim = _Akronim({
+export const roboto_mono = Roboto_Mono({
   subsets: ['latin'],
-  weight: '400',
-  display: 'block',
 })

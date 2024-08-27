@@ -75,18 +75,18 @@ const outlineSecondary = defineVariant({
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
-const outlineAssistive = defineVariant({
+const outlineTertiary = defineVariant({
   basic: {
     color: 'content.2',
     bgColor: 'background.basic.1',
-    borderColor: 'border.basic.2',
+    borderColor: 'content.6',
   },
   hover: { bgColor: 'background.basic.3' },
   active: { bgColor: 'background.basic.4' },
   disabled: { color: 'content.6', borderColor: 'border.basic.2' },
 })
 
-const primaryText = defineVariant({
+const textPrimary = defineVariant({
   basic: {
     color: 'primary.3',
     bgColor: 'transparent',
@@ -96,10 +96,10 @@ const primaryText = defineVariant({
   },
   hover: { color: 'primary.4', bgColor: 'transparent' },
   active: { color: 'primary.5', bgColor: 'transparent' },
-  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+  disabled: { color: 'content.6' },
 })
 
-const grayText = defineVariant({
+const textSecondary = defineVariant({
   basic: {
     color: 'content.3',
     bgColor: 'transparent',
@@ -109,14 +109,14 @@ const grayText = defineVariant({
   },
   hover: { color: 'content.4', bgColor: 'transparent' },
   active: { color: 'content.5', bgColor: 'transparent' },
-  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+  disabled: { color: 'content.6' },
 })
 
 export const variants = {
   'solid-primary': solidPrimary,
   'outline-primary': outlinePrimary,
   'outline-secondary': outlineSecondary,
-  'outline-assistive': outlineAssistive,
-  'primary-text': primaryText,
-  'gray-text': grayText,
+  'outline-tertiary': outlineTertiary,
+  'text-primary': textPrimary,
+  'text-secondary': textSecondary,
 }

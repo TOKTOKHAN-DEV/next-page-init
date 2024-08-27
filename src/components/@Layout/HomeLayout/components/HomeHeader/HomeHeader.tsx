@@ -25,7 +25,6 @@ const HomeHeader = ({ ...props }: ContainerProps) => {
 
   return (
     <Container
-      variant={'basis'}
       display={'flex'}
       w={'100%'}
       alignItems={'center'}

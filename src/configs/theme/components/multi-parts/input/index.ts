@@ -49,6 +49,10 @@ const Input = defineMultiStyleConfig({
           borderWidth: '1px',
           boxShadow: 'none',
           borderColor: 'accent.red.2',
+          _disabled: {
+            background: 'background.basic.2',
+            borderColor: 'border.basic.1',
+          },
         },
         _disabled: {
           background: 'background.basic.2',

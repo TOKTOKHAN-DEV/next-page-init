@@ -17,7 +17,7 @@ import { DeclaredFontsType } from './fonts/types/declared-fonts-type'
 const declaredNextFontsMock: DeclaredFontsType = {
   body: '', // for body
   heading: '', // for heading component
-  Akronim: '',
+  roboto_mono: '',
   Pretendard: '',
   'Pretendard Variable': '',
 }

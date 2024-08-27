@@ -140,7 +140,7 @@ function Login() {
           }
         />
       </HStack>
-      <HStack mt={'20px'} flexWrap={'wrap'} spacing={4}>
+      <HStack mt={'20px'} flexWrap={'wrap'} justify={'center'} spacing={'20px'}>
         <KakaoIconButton
           colorMode={colorMode}
           onClick={() =>

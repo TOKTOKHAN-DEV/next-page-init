@@ -22,6 +22,9 @@ const { defineMultiStyleConfig, definePartsStyle } =
   createMultiStyleConfigHelpers(parts.keys)
 
 const baseStyle = definePartsStyle({
+  _focusVisible: {
+    boxShadow: 'outline',
+  },
   control: {
     borderRadius: '3px',
     ...defineStyle({
@@ -56,37 +59,22 @@ const baseStyle = definePartsStyle({
     },
   },
   label: {
-    ml: '4px',
-    color: 'text.tertiary',
+    color: 'content.1',
+    m: 0,
     transition: 'all 0.2s ease-in-out',
-    lineHeight: '24px',
-    _hover: {
-      color: 'text.tertiary',
-    },
-    _focus: {
-      color: 'text.primary',
-    },
-    _checked: {
-      color: 'text.primary',
-      _hover: {
-        color: 'text.primary',
-      },
-    },
   },
 })
 
 const sizes = {
   sm: definePartsStyle({
-    control: { w: '20px', h: '20px', m: '2px', p: '2px' },
-    label: { ...textStyles['pre-body-02'] },
+    container: { gap: '6px' },
+    control: { boxSize: '16px', m: '2px' },
+    label: { ...textStyles['pre-body-06'] },
   }),
   md: definePartsStyle({
-    control: { w: '20px', h: '20px', m: '2px' }, // p 2px 안됨
-    label: { ...textStyles['pre-body-02'] },
-  }),
-  lg: definePartsStyle({
-    control: { w: '20px', h: '20px', m: '2px' },
-    label: { ...textStyles['pre-body-01'] },
+    container: { gap: '6px' },
+    control: { boxSize: '18px', m: '3px' },
+    label: { ...textStyles['pre-body-04'] },
   }),
 }
 

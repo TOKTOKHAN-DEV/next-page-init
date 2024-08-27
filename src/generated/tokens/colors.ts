@@ -127,158 +127,210 @@ export const colorSchema = {
 export const colors = {
   'accent.yellow.1': {
     default: colorSchema['yellow.50'],
+    _dark: colorSchema['yellow.50'],
   },
   'accent.yellow.2': {
     default: colorSchema['yellow.300'],
+    _dark: colorSchema['yellow.300'],
   },
   'accent.green.2': {
     default: colorSchema['green.400'],
+    _dark: colorSchema['green.400'],
   },
   'accent.red.2': {
     default: colorSchema['red.500'],
+    _dark: colorSchema['red.500'],
   },
   'accent.pink.1': {
     default: colorSchema['red.50'],
+    _dark: colorSchema['red.50'],
   },
   'accent.green.1': {
     default: colorSchema['green.50'],
+    _dark: colorSchema['green.50'],
   },
   'accent.violet.1': {
     default: colorSchema['violet.50'],
+    _dark: colorSchema['violet.50'],
   },
   'accent.red.1': {
     default: colorSchema['red.50'],
+    _dark: colorSchema['red.50'],
   },
   'primary.1': {
     default: colorSchema['brand.primary.50'],
+    _dark: colorSchema['brand.primary.50'],
   },
   'primary.2': {
     default: colorSchema['brand.primary.100'],
+    _dark: colorSchema['brand.primary.100'],
   },
   'primary.3': {
     default: colorSchema['brand.primary.500'],
+    _dark: colorSchema['brand.primary.500'],
   },
   'primary.4': {
     default: colorSchema['brand.primary.600'],
+    _dark: colorSchema['brand.primary.600'],
   },
   'primary.5': {
     default: colorSchema['brand.primary.700'],
+    _dark: colorSchema['brand.primary.700'],
   },
   'secondary.1': {
     default: colorSchema['brand.secondary.100'],
+    _dark: colorSchema['brand.secondary.100'],
   },
   'secondary.2': {
     default: colorSchema['brand.secondary.400'],
+    _dark: colorSchema['brand.secondary.400'],
   },
   'secondary.3': {
     default: colorSchema['brand.secondary.500'],
+    _dark: colorSchema['brand.secondary.500'],
   },
   'secondary.4': {
     default: colorSchema['brand.secondary.600'],
+    _dark: colorSchema['brand.secondary.600'],
   },
   'secondary.5': {
     default: colorSchema['brand.secondary.700'],
+    _dark: colorSchema['brand.secondary.700'],
   },
   'background.inverse.1': {
     default: colorSchema['grey.900'],
+    _dark: colorSchema['grey.900'],
   },
   'background.inverse.2': {
     default: colorSchema['grey.800'],
+    _dark: colorSchema['grey.800'],
   },
   'background.inverse.3': {
     default: colorSchema['grey.700'],
+    _dark: colorSchema['grey.700'],
   },
   'background.inverse.4': {
     default: colorSchema['grey.600'],
+    _dark: colorSchema['grey.600'],
   },
   'background.basic.1': {
     default: colorSchema['common.white'],
+    _dark: colorSchema['grey.900'],
   },
   'background.basic.2': {
     default: colorSchema['grey.50'],
+    _dark: colorSchema['grey.800'],
   },
   'background.basic.3': {
     default: colorSchema['grey.100'],
+    _dark: colorSchema['grey.700'],
   },
   'background.basic.4': {
     default: colorSchema['grey.200'],
+    _dark: colorSchema['grey.600'],
   },
   'content.1': {
     default: colorSchema['grey.900'],
+    _dark: colorSchema['common.white'],
   },
   'content.2': {
     default: colorSchema['grey.700'],
+    _dark: colorSchema['grey.100'],
   },
   'content.3': {
     default: colorSchema['grey.600'],
+    _dark: colorSchema['grey.300'],
   },
   'content.4': {
     default: colorSchema['grey.500'],
+    _dark: colorSchema['grey.500'],
   },
   'content.8': {
     default: colorSchema['common.white'],
+    _dark: colorSchema['grey.900'],
   },
   'content.6': {
     default: colorSchema['grey.300'],
+    _dark: colorSchema['grey.700'],
   },
   'content.5': {
     default: colorSchema['grey.400'],
+    _dark: colorSchema['grey.600'],
   },
   'border.basic.1': {
     default: colorSchema['grey.200'],
+    _dark: colorSchema['grey.700'],
   },
   'border.basic.2': {
     default: colorSchema['grey.300'],
+    _dark: colorSchema['grey.400'],
   },
   'border.basic.3': {
     default: colorSchema['grey.900'],
+    _dark: colorSchema['grey.300'],
   },
   'border.inverse.1': {
     default: colorSchema['grey.700'],
+    _dark: colorSchema['grey.700'],
   },
   'border.inverse.2': {
     default: colorSchema['grey.600'],
+    _dark: colorSchema['grey.600'],
   },
   'border.inverse.3': {
     default: colorSchema['grey.50'],
+    _dark: colorSchema['grey.50'],
   },
   'accent.blue.1': {
     default: colorSchema['blue.50'],
+    _dark: colorSchema['blue.50'],
   },
   'accent.blue.2': {
     default: colorSchema['blue.500'],
+    _dark: colorSchema['blue.500'],
   },
   'accent.pink.2': {
     default: colorSchema['pink.400'],
+    _dark: colorSchema['pink.400'],
   },
   'accent.violet.2': {
     default: colorSchema['violet.400'],
+    _dark: colorSchema['violet.400'],
   },
-  'transparent.basic.1': {
+  'transperent.basic.1': {
     default: colorSchema['grey.transparent.200'],
+    _dark: colorSchema['grey.transparent.200'],
   },
-  'transparent.inverse.1': {
+  'transperent.inverse.1': {
     default: colorSchema['white.transparent.200'],
+    _dark: colorSchema['white.transparent.200'],
   },
-  'transparent.basic.2': {
+  'transperent.basic.2': {
     default: colorSchema['grey.transparent.500'],
+    _dark: colorSchema['grey.transparent.500'],
   },
-  'transparent.basic.3': {
+  'transperent.basic.3': {
     default: colorSchema['grey.transparent.600'],
+    _dark: colorSchema['grey.transparent.600'],
   },
-  'transparent.basic.4': {
+  'transperent.basic.4': {
     default: colorSchema['grey.transparent.800'],
+    _dark: colorSchema['grey.transparent.800'],
   },
-  'transparent.inverse.3': {
+  'transperent.inverse.3': {
     default: colorSchema['white.transparent.600'],
+    _dark: colorSchema['white.transparent.600'],
   },
-  'transparent.inverse.2': {
+  'transperent.inverse.2': {
     default: colorSchema['white.transparent.500'],
+    _dark: colorSchema['white.transparent.500'],
   },
-  'transparent.inverse.4': {
+  'transperent.inverse.4': {
     default: colorSchema['white.transparent.800'],
+    _dark: colorSchema['white.transparent.800'],
   },
   'content.7': {
     default: colorSchema['grey.200'],
+    _dark: colorSchema['grey.800'],
   },
 }

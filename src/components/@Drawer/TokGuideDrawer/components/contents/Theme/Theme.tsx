@@ -49,17 +49,14 @@ const Theme = () => {
   const [isDisable, setIsDisable] = useState(false)
 
   const cloneWithDisabled = (
-    Component: ComponentType<{ isAllDisable: boolean }>,
+    Component: ComponentType<{ isDisable: boolean }>,
     index: number,
-  ) => <Component key={index} isAllDisable={isDisable} />
+  ) => <Component key={index} isDisable={isDisable} />
 
   return (
     <Box>
       <HStack mb={'20px'} justify={'end'}>
-        <Text textStyle={'pre-heading-05'}>
-          Toggle Disable{'\n'}
-          <Text textStyle={'pre-caption-04'}>(Radio, Checkbox, Switch)</Text>
-        </Text>
+        <Text textStyle={'pre-heading-05'}>Toggle Disable</Text>
         <Switch
           size={'sm'}
           isChecked={isDisable}

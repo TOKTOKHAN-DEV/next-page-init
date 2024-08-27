@@ -2,11 +2,11 @@ import React from 'react'
 
 import { Stack, Switch } from '@chakra-ui/react'
 
-const SwitchExample = ({ isAllDisable = false }: { isAllDisable: boolean }) => {
+const SwitchExample = ({ isDisable = false }: { isDisable: boolean }) => {
   return (
     <Stack align="center" direction="row">
-      <Switch isDisabled={isAllDisable} size="sm" />
-      <Switch isDisabled={isAllDisable} size="md" />
+      <Switch isDisabled={isDisable} size="sm" />
+      <Switch isDisabled={isDisable} size="md" />
     </Stack>
   )
 }
