@@ -5,7 +5,11 @@ import { Link, LinkTags, Section } from '../common/simple'
 export const Bookmarks = () => {
   return (
     <Box>
-      <Text>개발시 필요한 다양한 링크를 북마크 해두세요.</Text>
+      <Text>개발시 필요한 다양한 링크를 북마크 해두세요. </Text> 더 많은 정보는{' '}
+      <Link href={'https://toktokhan-dev-docs.vercel.app/docs/docs/intro'}>
+        똑똑한 개발자 공식문서
+      </Link>
+      를 참고해주세요.
       <Section
         title="Package"
         contents={
@@ -136,9 +140,6 @@ export const Bookmarks = () => {
             <Text>
               다양한 명령어를 통해, theme, openapi, img path 등 여러가지 파일을
               생성 할 수 있습니다.
-              <br />
-              자세한 내용은 <Link>여기</Link>
-              참고해주세요.
             </Text>
             <LinkTags
               data={[

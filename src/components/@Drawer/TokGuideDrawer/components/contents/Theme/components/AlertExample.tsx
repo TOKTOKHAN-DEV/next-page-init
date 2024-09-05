@@ -1,50 +1,34 @@
 import React from 'react'
 
-import {
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Button, ButtonGroup, useDisclosure } from '@chakra-ui/react'
+
+import CommonAlert from '@/components/@Modal/CommonAlert'
 
 const AlertExample = () => {
-  const {
-    isOpen: isOpenAlertModal,
-    onOpen: onOpenAlertModal,
-    onClose: onCloseAlertModal,
-  } = useDisclosure()
+  const alertDisClosure = useDisclosure()
+
   return (
     <>
-      <Button onClick={onOpenAlertModal}>OPEN ALERT</Button>
-      <Modal
-        isOpen={isOpenAlertModal}
-        onClose={onCloseAlertModal}
+      <ButtonGroup w={'100%'}>
+        <Button size={'sm'} onClick={alertDisClosure.onOpen}>
+          OPEN BUTTON ALERT
+        </Button>
+      </ButtonGroup>
+      <CommonAlert
         variant="alert"
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>HEADER</ModalHeader>
-          <ModalBody>BODY</ModalBody>
-          {/* P_TODO: direction에 따라 다르게 적용 */}
-          <ModalFooter>
-            <Button
-              onClick={onCloseAlertModal}
-              size="lg"
-              variant="outline-secondary"
-              w="100%"
-            >
-              취소
-            </Button>
-            <Button onClick={onCloseAlertModal} size="lg" w="100%">
-              확인
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+        isOpen={alertDisClosure.isOpen}
+        onClose={alertDisClosure.onClose}
+        header="타이틀"
+        body="디스크립션"
+        buttons={[
+          {
+            label: 'Label',
+            variant: 'outline-secondary',
+            onClick: alertDisClosure.onClose,
+          },
+          { label: 'Label', onClick: alertDisClosure.onClose },
+        ]}
+      />
     </>
   )
 }

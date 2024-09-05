@@ -15,9 +15,11 @@ import {
 import AlertExample from './components/AlertExample'
 import ButtonExample from './components/ButtonExample'
 import CheckboxExample from './components/CheckboxExample'
-import { InputExample } from './components/InputExample'
+import InputExample from './components/InputExample'
 import RadioExample from './components/RadioExample'
+import SelectExample from './components/SelectExample'
 import SwitchExample from './components/SwitchExample'
+import TextAreaExample from './components/TextAreaExample'
 
 const EXAMPLES = [
   {
@@ -27,6 +29,14 @@ const EXAMPLES = [
   {
     title: 'Input',
     component: InputExample,
+  },
+  {
+    title: 'TextArea',
+    component: TextAreaExample,
+  },
+  {
+    title: 'Select',
+    component: SelectExample,
   },
   {
     title: 'Radio',
