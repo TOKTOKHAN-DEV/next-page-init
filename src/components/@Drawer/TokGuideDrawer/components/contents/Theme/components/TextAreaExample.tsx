@@ -2,22 +2,19 @@ import { useState } from 'react'
 
 import {
   FormLabelProps,
-  Input,
   Radio,
   RadioGroup,
   Stack,
+  Textarea,
   VStack,
 } from '@chakra-ui/react'
 
 import FormHelper from '@/components/FormHelper'
 
-const VARIANTS = ['outline', 'solid', 'underlined'] as const
+const VARIANTS = ['outline', 'solid'] as const
 type Keys = (typeof VARIANTS)[number]
-const InputExample = ({ isDisable = false }: { isDisable: boolean }) => {
+const TextAreaExample = ({ isDisable = false }: { isDisable: boolean }) => {
   const [variant, setVariant] = useState<Keys>('outline')
-  const formLabelProps: FormLabelProps = {
-    variant: variant === 'underlined' ? variant : 'lined',
-  }
 
   return (
     <>
@@ -35,62 +32,44 @@ const InputExample = ({ isDisable = false }: { isDisable: boolean }) => {
           label="주제"
           message={{ help: '설명' }}
           isDisabled={isDisable}
-          styles={{
-            label: formLabelProps,
-          }}
         >
-          <Input variant={variant} placeholder="텍스트를 입력해주세요" />
+          <Textarea variant={variant} placeholder="텍스트를 입력해주세요" />
         </FormHelper>
         <FormHelper
           label="주제"
           message={{ help: '설명' }}
           isDisabled={isDisable}
-          styles={{
-            label: formLabelProps,
-          }}
         >
-          <Input value="값" variant={variant} onChange={() => {}} />
+          <Textarea value="값" variant={variant} onChange={() => {}} />
         </FormHelper>
         <FormHelper
           label="주제"
           message={{ error: '설명' }}
           isInvalid
           isDisabled={isDisable}
-          styles={{
-            label: formLabelProps,
-          }}
         >
-          <Input autoFocus variant={variant} />
+          <Textarea autoFocus variant={variant} />
         </FormHelper>
         <FormHelper
           label="주제"
           message={{ success: '설명' }}
           isDisabled={isDisable}
-          styles={{
-            label: formLabelProps,
-          }}
         >
-          <Input value="값" variant={variant} onChange={() => {}} />
+          <Textarea value="값" variant={variant} onChange={() => {}} />
         </FormHelper>
         <FormHelper
           label="주제"
           message={{ help: '설명' }}
           isDisabled={isDisable}
-          styles={{
-            label: formLabelProps,
-          }}
         >
-          <Input variant={variant} value="값" onChange={() => {}} />
+          <Textarea variant={variant} value="값" onChange={() => {}} />
         </FormHelper>
         <FormHelper
           label="주제"
           message={{ help: '설명' }}
           isDisabled={isDisable}
-          styles={{
-            label: formLabelProps,
-          }}
         >
-          <Input
+          <Textarea
             variant={variant}
             placeholder="텍스트를 입력해주세요"
             isDisabled
@@ -101,4 +80,4 @@ const InputExample = ({ isDisable = false }: { isDisable: boolean }) => {
   )
 }
 
-export default InputExample
+export default TextAreaExample

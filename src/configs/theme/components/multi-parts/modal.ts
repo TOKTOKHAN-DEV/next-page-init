@@ -14,10 +14,9 @@ const baseStyle = definePartsStyle({
 const variants = {
   alert: definePartsStyle({
     dialog: {
-      borderRadius: '12px',
-      px: '24px',
-      pt: '32px',
-      pb: '24px',
+      w: '311px', // fixed
+      borderRadius: '16px',
+      p: '24px',
       bg: `white`,
     },
     header: {
@@ -38,7 +37,7 @@ const variants = {
     footer: {
       justifyContent: 'center',
       p: '0',
-      gap: '8px',
+      gap: '12px',
     },
   }),
   modal: definePartsStyle({
