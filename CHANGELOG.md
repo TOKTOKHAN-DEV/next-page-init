@@ -1,5 +1,22 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.14
+
+### Patch Changes
+
+- [#27](https://github.com/TOKTOKHAN-DEV/next-page-init/pull/27) [`bc66946`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/bc669466655bad78bcd65273ee044b413cd662bd) Thanks [@AlgoRoots](https://github.com/AlgoRoots)! - - theme 추가 및 변경
+  - input, button, select, form , form-label, form-error, modal, textarea
+  - 삭제
+    - spinner, badge, tooltip
+  - 기본 컴포넌트 디자인 시스템 적용
+    - VerificationInput
+    - CommonAlert
+    - CommonSelect
+  - TokGuide Theme, component preview 추가 및 bookmark 링크 추가
+    - useTimer사용한 VerificationInput 에제
+    - 기타 Theme components...
+  - @toktokhan-dev/\* packages update
+
 ## 0.0.13
 
 ### Patch Changes
