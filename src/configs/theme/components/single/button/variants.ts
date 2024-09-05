@@ -61,7 +61,11 @@ const outlinePrimary = defineVariant({
   },
   hover: { bgColor: 'primary.1' },
   active: { bgColor: 'primary.2' },
-  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+  disabled: {
+    color: 'content.6',
+    borderColor: 'border.basic.2',
+    bgColor: 'background.basic.1',
+  },
 })
 
 const outlineSecondary = defineVariant({
@@ -70,20 +74,28 @@ const outlineSecondary = defineVariant({
     bgColor: 'background.basic.1',
     borderColor: 'border.basic.2',
   },
-  hover: { bgColor: 'transparent' },
+  hover: { bgColor: 'background.basic.3' },
   active: { bgColor: 'background.basic.4' },
-  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+  disabled: {
+    color: 'content.6',
+    borderColor: 'border.basic.2',
+    bgColor: 'background.basic.1',
+  },
 })
 
 const outlineTertiary = defineVariant({
   basic: {
     color: 'content.2',
     bgColor: 'background.basic.1',
-    borderColor: 'content.6',
+    borderColor: 'border.basic.2',
   },
   hover: { bgColor: 'background.basic.3' },
   active: { bgColor: 'background.basic.4' },
-  disabled: { color: 'content.6', borderColor: 'border.basic.2' },
+  disabled: {
+    color: 'content.6',
+    borderColor: 'border.basic.2',
+    bgColor: 'background.basic.1',
+  },
 })
 
 const textPrimary = defineVariant({

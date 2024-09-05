@@ -255,7 +255,7 @@ export const colors = {
   },
   'content.5': {
     default: colorSchema['grey.400'],
-    _dark: colorSchema['grey.600'],
+    _dark: colorSchema['grey.500'],
   },
   'border.basic.1': {
     default: colorSchema['grey.200'],

@@ -1,7 +1,9 @@
 import { inputAnatomy as parts } from '@chakra-ui/anatomy'
-import { createMultiStyleConfigHelpers, defineStyle } from '@chakra-ui/react'
+import { createMultiStyleConfigHelpers } from '@chakra-ui/react'
 
-import textStyles from '@/configs/theme/foundations/text-styles'
+import { textStyles } from '@/generated/tokens/text-styles'
+
+import { variants } from './variants'
 
 const { defineMultiStyleConfig } = createMultiStyleConfigHelpers(parts.keys)
 
@@ -13,54 +15,19 @@ const Input = defineMultiStyleConfig({
         color: 'content.5',
       },
     },
+    element: {
+      pr: '12px',
+      color: 'content.2',
+      ...textStyles['pre-body-06'],
+      _disabled: {
+        color: 'content.6',
+      },
+    },
   },
   defaultProps: {
     variant: 'outline',
   },
-  variants: {
-    unstyled: defineStyle({
-      field: {},
-    }),
-    filled: defineStyle({
-      field: {},
-    }),
-    flushed: defineStyle({
-      field: {},
-    }),
-    outline: defineStyle({
-      field: {
-        /**  textStyle 토큰 적용 안됨 */
-        ...textStyles['pre-body-04'],
-        height: '48px',
-        borderWidth: '1px',
-        borderColor: 'border.basic.1',
-        borderRadius: '10px',
-
-        /** 컬러 토큰 적용안됨 */
-        caretColor: '#3d6be5',
-        // caretColor: 'primary.3',
-
-        _focus: {
-          borderWidth: '1px',
-          boxShadow: 'none',
-          borderColor: 'primary.3',
-        },
-        _invalid: {
-          borderWidth: '1px',
-          boxShadow: 'none',
-          borderColor: 'accent.red.2',
-          _disabled: {
-            background: 'background.basic.2',
-            borderColor: 'border.basic.1',
-          },
-        },
-        _disabled: {
-          background: 'background.basic.2',
-          borderColor: 'border.basic.1',
-        },
-      },
-    }),
-  },
+  variants,
 })
 
 export default Input

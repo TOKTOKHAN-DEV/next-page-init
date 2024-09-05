@@ -37,6 +37,8 @@ interface FormHelperProps extends FormControlProps {
  * 자식 Chakra Form Component 에게 Context 로 전달해줍니다.
  *
  * @see https://chakra-ui.com/docs/components/form/form-control
+ *
+ * Theming path: src/configs/theme/components/multi-parts/form-control
  * */
 const FormHelper = ({
   //
@@ -55,45 +57,20 @@ const FormHelper = ({
 
   return (
     <FormControl isInvalid={isShowErrorText} {...basisProps}>
-      {!!label && (
-        <FormLabel
-          textStyle="pre-body-05"
-          color="content.3"
-          fontWeight={600}
-          mb="8px"
-          {...styles?.label}
-        >
-          {label}
-        </FormLabel>
-      )}
+      {!!label && <FormLabel {...styles?.label}>{label}</FormLabel>}
       {children}
       {isShowErrorText && (
-        <FormErrorMessage
-          textStyle="pre-cation-02"
-          color="accent.red.2"
-          mt="8px"
-          {...styles?.error}
-        >
+        <FormErrorMessage as={'p'} {...styles?.error}>
           {message?.error}
         </FormErrorMessage>
       )}
       {isShowSuccessText && (
-        <FormHelperText
-          textStyle="pre-cation-02"
-          color="accent.green.2"
-          mt="8px"
-          {...styles?.success}
-        >
+        <FormHelperText as={'p'} color="accent.green.2" {...styles?.success}>
           {message?.success}
         </FormHelperText>
       )}
       {isShowHelperText && (
-        <FormHelperText
-          textStyle="pre-cation-02"
-          color="content.4"
-          mt="8px"
-          {...styles?.help}
-        >
+        <FormHelperText as={'p'} color="content.4" {...styles?.help}>
           {message?.help}
         </FormHelperText>
       )}
