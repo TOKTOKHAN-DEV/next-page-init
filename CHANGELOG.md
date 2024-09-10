@@ -1,5 +1,15 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.15
+
+### Patch Changes
+
+- [`a7166ba`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/a7166ba4e950fccc64da57d5fc4dcc72928b3594) Thanks [@AlgoRoots](https://github.com/AlgoRoots)! - fix
+
+  - variable font 가중치 (weight)범위를 적용했습니다.
+    - safari에서 pretendard variable 로컬폰트 적용 안됨 이슈 수정
+  - 제보 및 수정 제안해주신 [@keemtj](https://github.com/keemtj), [@kkwaktae](https://github.com/kkwaktae)님 감사합니다.
+
 ## 0.0.14
 
 ### Patch Changes
