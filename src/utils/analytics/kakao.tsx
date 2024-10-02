@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Analytics } from './types'
-import { analyticsValidCheckHandler } from './utils/valid-check-with-proxy'
+import { checkAnalytics } from './utils/check-analytics'
 
 /**
  * @brief Kakao Pixel에서 제공하는 이벤트가 정의된 클래스입니다.
@@ -10,8 +10,7 @@ import { analyticsValidCheckHandler } from './utils/valid-check-with-proxy'
  * @see Docs https://kakaoad.github.io/kakao-pixel/
  */
 export class KakaoAnalytics {
-  private kakao: (id: string) => kakao.Pixel.Event | void = () => {}
-  private kakaoPixel: kakao.Pixel.Event | undefined = undefined // Initialize with `undefined`
+  private kakao: kakao.Pixel.Event | null = null
 
   /**
    * KakaoAnalytics 클래스의 새 인스턴스를 생성합니다.
@@ -23,32 +22,7 @@ export class KakaoAnalytics {
       return
     }
     this.key = key
-
-    this.kakao = new Proxy(
-      typeof window !== 'undefined' ? window.kakaoPixel : () => {},
-      {
-        get: (target, propKey) => {
-          console.log('target:', target)
-          console.log('propKey:', propKey)
-          if (
-            typeof window !== 'undefined' &&
-            typeof window.kakaoPixel === 'function'
-          ) {
-            return window.kakaoPixel
-          } else {
-            console.warn('kakaoPixel Analytics is not initialized.')
-            return () => {} // No-op function if gtag is not initialized
-          }
-        },
-      },
-    )
-
-    console.log(
-      'window.kakaoPixel',
-      typeof window !== 'undefined' ? typeof window.kakaoPixel : 'undefined',
-    )
-
-    this.kakaoPixel = this.kakao?.(this.key) as any
+    this.kakao = checkAnalytics('Kakao', key, () => window.kakaoPixel(key))
   }
   /**
    * 회원가입 완료 이벤트를 전송합니다.
@@ -59,8 +33,7 @@ export class KakaoAnalytics {
    * <Button onClick={() => kakaoAnalytics.completeRegistration({ tag: 'user1' })}>회원가입 완료</Button>
    */
   completeRegistration = (params: Analytics.CompleteRegistration['Kakao']) => {
-    console.log('this.kakaoPixel', this.kakaoPixel)
-    this.kakaoPixel?.completeRegistration(params?.tag)
+    this.kakao?.completeRegistration(params?.tag)
   }
 
   /**
@@ -72,7 +45,7 @@ export class KakaoAnalytics {
    * <Button onClick={() => kakaoAnalytics.pageView({ tag: '홈 페이지' })}>페이지 조회</Button>
    */
   pageView = (params: Analytics.PageView['Kakao']) => {
-    this.kakaoPixel?.pageView(params?.tag)
+    this.kakao?.pageView(params?.tag)
   }
 
   /**
@@ -84,7 +57,7 @@ export class KakaoAnalytics {
    * <Button onClick={() => kakaoAnalytics.viewContent({ tag: '상품1' })}>콘텐츠 보기</Button>
    */
   viewContent = (params: Analytics.ViewContent['Kakao']) => {
-    this.kakaoPixel?.viewContent(params)
+    this.kakao?.viewContent(params)
   }
 
   /**
@@ -96,7 +69,7 @@ export class KakaoAnalytics {
    * <Button onClick={() => kakaoAnalytics.search({ tag: "카테고리", keyword: "검색어"})}>검색</Button>
    */
   search = (params: Analytics.Search['Kakao']) => {
-    this.kakaoPixel?.search(params)
+    this.kakao?.search(params)
   }
 
   /**

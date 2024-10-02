@@ -1,5 +1,7 @@
 import { Button, Center, Text } from '@chakra-ui/react'
 
+import dayjs from 'dayjs'
+
 import { googleAnalytics, kakaoAnalytics } from '@/utils/analytics/analytics'
 
 function Home() {
@@ -19,7 +21,7 @@ function Home() {
       <Button
         onClick={() =>
           kakaoAnalytics.completeRegistration({
-            tag: '@@@@회웡',
+            tag: dayjs().format('YYYY-MM-DD:HH:mm:ss'),
           })
         }
       >
@@ -30,7 +32,7 @@ function Home() {
         onClick={() =>
           googleAnalytics.completeRegistration({
             id: 11,
-            name: '@@hi',
+            name: '@@hi2222',
           })
         }
       >

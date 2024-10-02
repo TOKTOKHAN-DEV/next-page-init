@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Analytics } from './types'
-import { analyticsValidCheckHandler } from './utils/valid-check-with-proxy'
+import { checkAnalytics } from './utils/check-analytics'
 
 /**
  * @brief Meta pixel(Facebook) event가 정의 된 class입니다.
@@ -12,20 +12,15 @@ import { analyticsValidCheckHandler } from './utils/valid-check-with-proxy'
  */
 
 export class FacebookAnalytics {
-  private fbq: facebook.Pixel.Event = () => {}
+  private fbq: facebook.Pixel.Event | null = null
 
   /**
    * FacebookAnalytics 클래스의 새 인스턴스를 생성합니다.
    * @param key Facebook 픽셀 키입니다.
    */
   constructor(private key?: string) {
-    if (!key) {
-      console.warn('Facebook 키 설정이 필요합니다.')
-      return
-    }
     this.key = key
-    const proxy = new Proxy(this, analyticsValidCheckHandler('fbq'))
-    this.fbq = proxy.fba
+    this.fbq = checkAnalytics('Facebook', key, () => window.fbq)
   }
 
   /**등록 양식을 작성 완료한 경우.
@@ -35,7 +30,7 @@ export class FacebookAnalytics {
    * @param {number} value -비즈니스에서 이 이벤트를 실행한 사용자의 가치
    */
   completeRegistration = (params: Analytics.CompleteRegistration['Fbq']) => {
-    this.fbq('track', 'CompleteRegistration', params)
+    this.fbq?.('track', 'CompleteRegistration', params)
   }
 
   /**
@@ -44,7 +39,7 @@ export class FacebookAnalytics {
    * @param {string} content_name - 페이지/제품의 이름
    */
   pageView = (params: Analytics.PageView['Fbq']) => {
-    this.fbq('track', 'ViewContent', params)
+    this.fbq?.('track', 'ViewContent', params)
   }
 
   /**
@@ -58,7 +53,7 @@ export class FacebookAnalytics {
    * @param {number} value -비즈니스에서 이 이벤트를 실행한 사용자의 가치
    */
   viewContent = (params: Analytics.ViewContent['Fbq']) => {
-    this.fbq('track', 'ViewContent', params)
+    this.fbq?.('track', 'ViewContent', params)
   }
 
   /**
@@ -71,7 +66,7 @@ export class FacebookAnalytics {
    * @param {number} value -비즈니스에서 이 이벤트를 실행한 사용자의 가치
    */
   search = (params: Analytics.Search['Fbq']) => {
-    this.fbq('track', 'Search', params)
+    this.fbq?.('track', 'Search', params)
   }
 
   /**

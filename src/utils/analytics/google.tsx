@@ -1,36 +1,13 @@
 import { Analytics } from './types'
+import { checkAnalytics } from './utils/check-analytics'
 
 export class GoogleAnalytics {
-  private ga: Gtag.Gtag = () => {}
+  private ga: Gtag.Gtag | null = null
 
   constructor(private key?: string) {
-    if (!key) {
-      console.warn('GA 키 설정이 필요합니다.')
-      return
-    }
     this.key = key
-
-    this.ga = new Proxy(
-      typeof window !== 'undefined' ? window.gtag : () => {},
-      {
-        get: (target, propKey) => {
-          console.log('target:', target)
-
-          console.log('propKey:', propKey)
-          if (
-            typeof window !== 'undefined' &&
-            typeof window.gtag === 'function'
-          ) {
-            return window.gtag
-          } else {
-            console.warn('Google Analytics is not initialized.')
-            return () => {} // No-op function if gtag is not initialized
-          }
-        },
-      },
-    )
+    this.ga = checkAnalytics('Google', key, () => window.gtag)
   }
-
   /**
    * 회원가입 완료 이벤트를 추적합니다.
    *
@@ -41,9 +18,7 @@ export class GoogleAnalytics {
    * <Button onClick={() => googleAnalytics.completeRegistration(22, 'user1')}>회원가입 완료</Button>
    */
   completeRegistration = (params: Analytics.CompleteRegistration['Ga']) => {
-    console.log('this.ga', this.ga)
-
-    this.ga('event', 'sign_up', params)
+    this.ga?.('event', 'sign_up', params)
   }
 
   /**
@@ -56,7 +31,7 @@ export class GoogleAnalytics {
    * <Button onClick={() => googleAnalytics.viewContent(1234, '상품1')}>콘텐츠 보기</Button>
    */
   viewContent = (params: Analytics.ViewContent['Ga']) => {
-    this.ga('event', 'view_item', params)
+    this.ga?.('event', 'view_item', params)
   }
 
   /**
@@ -66,7 +41,7 @@ export class GoogleAnalytics {
    * <Button onClick={googleAnalytics.login()}>로그인</Button>
    */
   login = () => {
-    this.ga('event', 'login')
+    this.ga?.('event', 'login')
   }
 
   /**
