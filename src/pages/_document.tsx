@@ -10,6 +10,7 @@ import Document, {
 import { ColorModeScript } from '@chakra-ui/react'
 
 import config from '@/configs/theme/config'
+import { GASetter, KakaoSetter } from '@/utils/analytics/analytics'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -35,6 +36,9 @@ class MyDocument extends Document {
         <Head>
           <script dangerouslySetInnerHTML={this.redirectIEtoEdge()} />
           {/* 분석도구가 필요한 경우 주석 해제 후 사용해주세요. src/utils/analytics/analytics.ts 설정 필요 */}
+          {GASetter()}
+          {KakaoSetter()}
+
           {/* {GASetter()}
           {KakaoSetter()}
           {FacebookSetter()} */}
