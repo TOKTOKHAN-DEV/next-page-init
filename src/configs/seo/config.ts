@@ -54,21 +54,21 @@ export const config: DefaultSeoProps = {
     },
     {
       rel: 'apple-touch-icon',
-      href: '/icons/120.png',
+      href: '/images/120.png',
     },
     {
       rel: 'apple-touch-icon',
-      href: '/icons/152.png',
+      href: '/images/152.png',
       sizes: '152x152',
     },
     {
       rel: 'apple-touch-icon',
-      href: '/icons/167.png',
+      href: '/images/167.png',
       sizes: '167x167',
     },
     {
       rel: 'apple-touch-icon',
-      href: '/icons/180.png',
+      href: '/images/180.png',
       sizes: '180x180',
     },
     {
@@ -83,7 +83,7 @@ export const config: DefaultSeoProps = {
   additionalMetaTags: [
     // next-seo에서 다루지 않는 meta tag를 적용합니다.
     {
-      name: 'apple-mobile-web-app-capable',
+      name: 'mobile-web-app-capable',
       content: 'yes',
     },
     {
