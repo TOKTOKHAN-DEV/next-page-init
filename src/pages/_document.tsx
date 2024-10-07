@@ -11,6 +11,8 @@ import { ColorModeScript } from '@chakra-ui/react'
 
 import config from '@/configs/theme/config'
 
+// import { GASetter, KakaoSetter, FacebookSetter } from '@/utils/analytics/analytics'
+
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
