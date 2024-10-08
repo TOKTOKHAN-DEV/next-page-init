@@ -21,7 +21,7 @@ export const TokGuideDrawer = Object.assign(
         {...props}
       >
         <DrawerOverlay />
-        <DrawerContent bg="common.white">
+        <DrawerContent>
           <DrawerCloseButton w="40px" h="40px" />
           <DrawerBody>
             <TokGuide />
