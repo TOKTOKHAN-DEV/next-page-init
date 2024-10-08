@@ -1,6 +1,8 @@
 import { ReactNode } from 'react'
 
 import {
+  Button,
+  ButtonGroup,
   ChakraProps,
   Modal,
   ModalBody,
@@ -12,8 +14,7 @@ import {
   ModalProps,
 } from '@chakra-ui/react'
 
-import Button from './components/Button'
-import ButtonGroup from './components/ButtonGroup'
+import { withProps } from '@/hocs/withProps'
 
 export interface ModalBasisProps extends Omit<ModalProps, 'children'> {
   header?: ReactNode
@@ -62,5 +63,5 @@ const ModalBasis = ({
 
 export default ModalBasis
 
-ModalBasis.ButtonGroup = ButtonGroup
-ModalBasis.Button = Button
+ModalBasis.ButtonGroup = withProps(ButtonGroup, { width: '100%' })
+ModalBasis.Button = withProps(Button, { width: '100%', size: 'md' })
