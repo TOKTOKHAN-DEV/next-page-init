@@ -60,7 +60,7 @@
     "@next/bundle-analyzer": "^14.2.4",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
-    "@toktokhan-dev/cli": "^0.0.11",
+    "@toktokhan-dev/cli": "0.0.11",
     "@toktokhan-dev/cli-plugin-commit": "0.0.10",
     "@toktokhan-dev/cli-plugin-gen-api-react-query": "0.0.17",
     "@toktokhan-dev/cli-plugin-gen-icon-chakra": "0.0.11",

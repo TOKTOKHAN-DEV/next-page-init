@@ -11,6 +11,7 @@ import {
 import { Bookmarks } from './contents/Bookmarks'
 import Components from './contents/Components/Components'
 import { Examples } from './contents/Examples'
+import Form from './contents/Form/Form'
 import State from './contents/State/State'
 import Theme from './contents/Theme/Theme'
 
@@ -27,6 +28,7 @@ export const TokGuide = () => {
         <TabList>
           <Tab>Bookmarks</Tab>
           <Tab>State</Tab>
+          <Tab>Form</Tab>
           <Tab>Theme</Tab>
           <Tab>Components</Tab>
           <Tab>Examples</Tab>
@@ -37,6 +39,9 @@ export const TokGuide = () => {
           </TabPanel>
           <TabPanel>
             <State />
+          </TabPanel>
+          <TabPanel>
+            <Form />
           </TabPanel>
           <TabPanel>
             <Theme />
