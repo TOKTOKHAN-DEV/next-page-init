@@ -1,5 +1,122 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.16
+
+### Patch Changes
+
+- [`b4836b1`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/b4836b1b3f51dd4dc9c7f9bbfcb6e09990fd6e5f) Thanks [@AlgoRoots](https://github.com/AlgoRoots)! - - favicon image 경로 수정
+
+- [`30c8958`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/30c89589622848adfdda679f727d1eaa550b2471) Thanks [@AlgoRoots](https://github.com/AlgoRoots)! - - use-hook-form + yup 사용 예제가 추가되었습니다.
+
+  - hook form 경로 src/hooks/useExampleForm.ts
+  - 상수 경로
+    - 상수는 서지우님의 gen-yup plugin 개발시 디자이너와 상의 후 결정된 정규식, 문구로 지정하였습니다. (Thanks [@Panxoat](https://github.com/Panxoat)!)
+    - src/constants/form/regex.ts
+    - src/constants/form/helper-text.ts
+  - 예제 컴포넌트
+    - TokGide Form Tab (src/components/@Drawer/TokGuideDrawer/components/contents/Form/Form.tsx)
+
+- [`99c187f`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/99c187fe4fc7589dd63645c36af053940c934ccc) Thanks [@ldu1020](https://github.com/ldu1020)! - color theme
+
+  color theme 에 원시값이 포함되지 않는 버그와 default 값이 함께 잡히는 버그가 수정되었습니다.
+
+- [`3334038`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/33340384e97c8ddfa7e60f08207da8ee853a56f1) Thanks [@ldu1020](https://github.com/ldu1020)! - add hoc 'withProps'
+
+- [`b4c320f`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/b4c320f5ba2d45180b3308e9050d22851dca4fa7) Thanks [@ldu1020](https://github.com/ldu1020)! - button theme
+
+  - left, right icon 에 대한 디자인 case 가 추가되었습니다.
+
+- [`b2d4a2b`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/b2d4a2b5593b644ce6e84af0cc1dc9f49c229e9f) Thanks [@ldu1020](https://github.com/ldu1020)! - add tokript plugin gen:source
+
+- [`4ca15f0`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/4ca15f0b69d701b3eca4068e667e9137f2d6726f) Thanks [@ldu1020](https://github.com/ldu1020)! - update gen:theme version
+
+- [#31](https://github.com/TOKTOKHAN-DEV/next-page-init/pull/31) [`8af9316`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/8af93165f641a66c40641a743ca5685d3cebc6e5) Thanks [@AlgoRoots](https://github.com/AlgoRoots)! - Google(ga), Kakao(kakaoSetter), Facebook(fbq) 분석도구 모듈를 추가하였습니다.
+  필요시 src/pages/\_document.tsx 파일에서 필요한 setter함수를 주석 해제 해주시고, 이에 따라 요구되는 메서드들은
+  src/utils/analytics/analytics.ts 에서 주석을 해제해주세요.
+
+  구글은 기본적으로 추적되는 이벤트가 있습니다. 디테일 한 이벤트 추가시 메서드를 추가해 사용해주시면 됩니다.
+
+  # 사용 경로
+
+  ## src/pages/\_document.tsx
+
+  ```ts
+  ...
+    render() {
+      return (
+        <Html>
+          <Head>
+            ...
+            {/* 분석도구가 필요한 경우 주석 해제 후 사용해주세요. src/utils/analytics/analytics.ts 설정 필요 */}
+            {/* {GASetter()}
+            {KakaoSetter()}
+            {FacebookSetter()} */}
+          </Head>
+          <body>
+            ...
+          </body>
+        </Html>
+      )
+    }
+  ...
+  ```
+
+  ## src/utils/analytics/analytics.ts
+
+  ```ts
+  **
+   * 필요하지 않은 분석 도구는 해당 파일에서 꼭 제거해주세요.
+   * 단일 분석 도구만 사용할 경우, 해당 도구의 메서드를 직접 호출하여 사용합니다.
+   *
+   * @example
+   * useEffect(() => {
+   *  facebookAnalytics?.pageView({ content_name: 'page2', content_ids: [2] });
+   * }, [])
+   */
+
+  export const googleAnalytics = new GoogleAnalytics(ENV.GA_KEY)
+  export const facebookAnalytics = new FacebookAnalytics(ENV.FACEBOOK_PIXEL_KEY)
+  export const kakaoAnalytics = new KakaoAnalytics(ENV.KAKAO_PIXEL_KEY)
+
+  /** Google Analytics, Facebook Pixel, Kakao Pixel을 모두 사용하는 경우 아래의 함수를 공통으로 사용할 수 있습니다. */
+  export const completeRegistrationAnalytics = (
+    params: Analytics.CompleteRegistration,
+  ) => {
+    googleAnalytics?.completeRegistration(params.Ga)
+    facebookAnalytics?.completeRegistration(params.Fbq)
+    kakaoAnalytics?.completeRegistration(params.Kakao)
+  }
+
+  /** 각 분석 도구의 설정 메서드를 호출하는 함수들입니다.  */
+  export const GASetter = () => googleAnalytics?.GASetter()
+  export const FacebookSetter = () => facebookAnalytics?.FacebookSetter()
+  export const KakaoSetter = () => kakaoAnalytics?.KakaoSetter()
+  ```
+
+  # 사용 예제
+
+  ```tsx
+  <>
+    <Button onClick={() => googleAnalytics.completeRegistration()}>
+      회원가입 완료
+    </Button>
+
+    <Button
+      onClick={() =>
+        facebookAnalytics.viewContent({
+          content_name: 'Product Page',
+          content_ids: [123],
+          content_type: 'product',
+          currency: 'USD',
+          value: 200,
+        })
+      }
+    >
+      콘텐츠 조회
+    </Button>
+  </>
+  ```
+
 ## 0.0.15
 
 ### Patch Changes
