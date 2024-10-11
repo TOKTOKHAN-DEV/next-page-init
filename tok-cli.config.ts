@@ -4,6 +4,7 @@ import { genApi } from '@toktokhan-dev/cli-plugin-gen-api-react-query'
 import { genIcon } from '@toktokhan-dev/cli-plugin-gen-icon-chakra'
 import { genImg } from '@toktokhan-dev/cli-plugin-gen-img'
 import { genRoutePage } from '@toktokhan-dev/cli-plugin-gen-route-pages'
+import { genSource } from '@toktokhan-dev/cli-plugin-gen-source'
 import { genTheme } from '@toktokhan-dev/cli-plugin-gen-theme-chakra'
 
 const config: RootConfig<{
@@ -13,10 +14,11 @@ const config: RootConfig<{
     typeof genApi,
     typeof genTheme,
     typeof genIcon,
+    typeof genSource,
     typeof commit,
   ]
 }> = {
-  plugins: [genImg, genRoutePage, genApi, genTheme, genIcon, commit],
+  plugins: [genImg, genRoutePage, genApi, genTheme, genIcon, genSource, commit],
   'gen:img': {
     input: 'public/images',
     oneDepth: true,
@@ -43,6 +45,9 @@ const config: RootConfig<{
   },
   'gen:icon': {
     input: 'public/icons',
+  },
+  'gen:source': {
+    appName: 'toktokhan-dev',
   },
 }
 export default config

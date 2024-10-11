@@ -8,7 +8,7 @@ import { Link } from '../../common/simple'
 import Sections from './components/@Layout/Sections'
 import Global from './components/Global'
 import Storage from './components/Storage'
-import Local from './components/local/Local\b'
+import Local from './components/local/Local'
 import { CountProvider } from './components/local/storage/state'
 
 const State = () => {
