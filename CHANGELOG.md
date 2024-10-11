@@ -1,5 +1,11 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.17
+
+### Patch Changes
+
+- [`e19bcf0`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/e19bcf0e5a29c4feff30e117398c55e5006eb966) Thanks [@ldu1020](https://github.com/ldu1020)! - remove os in 'package.json'
+
 ## 0.0.16
 
 ### Patch Changes
