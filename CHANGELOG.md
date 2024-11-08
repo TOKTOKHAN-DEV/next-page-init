@@ -1,5 +1,12 @@
 # @toktokhan-dev/next-page-init
 
+## 0.0.18
+
+### Patch Changes
+
+- [`c5edb60`](https://github.com/TOKTOKHAN-DEV/next-page-init/commit/c5edb60a7e31f79423f6e6239baa392caaf25d7d) Thanks [@AlgoRoots](https://github.com/AlgoRoots)! - @toktokhan-dev 패키지 버전 ^ 추가
+  이후 버전관리는 시멘틱 버저닝에 맞게 업데이트 할 예정입니다.
+
 ## 0.0.17
 
 ### Patch Changes
